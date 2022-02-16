@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+:root {
+    --bg-primary: #151718;
+    --bg-secondary: #282b2e;
+    --bg-tertiary: #2e3031;
+    --fg-primary: #FFFFFF;
+    --fg-secondary: #ADB5BD;
+    --fg-tertiary: #868E96;
+    --status: #1864AB;
+    --on-time: #1864AB;
+    --early: #2B8A3E;
+    /*--late: #C92A2A;*/
+    --late: #a832cc;
+    --complete: #212529;
+}
+
+* {
+	box-sizing: border-box;
+    pointer-events: auto;
+}
+
+.leaflet-container {
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+	color: var(--fg-primary);
+	background-color: var(--bg-primary);
+	font-family: 'Inter', sans-serif;
+	width: 100%;
+	justify-content: center;
+	margin: 0;
+}
+
+.drawerTitle {
+    display: flex;
+    flex-direction: row;
+}
+
+.drawer {
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    width: 100%;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    background-color: var(--bg-primary);
+    border-color: var(--bg-tertiary);
+    bottom: 0px;
+    top: 100%;
+    position: absolute;
+    transition-timing-function: ease-in-out;
+    transition-duration: 500ms;
+    transition-property: margin-top, top, bottom, height, border-top-left-radius, border-top-right-radius;
+}
+
+.drawerUp {
+    height: 100%;
+    top: 0%;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+@keyframes slide-up {
+    from {
+    margin-top: 100%;
+    height: 0%;
+    }
+    to {
+    margin-top: 0%;
+    height: 100%;
+    border-top-left-radius: 0px;
+    border-top-tight-radius: 0px;
+    }
+}
+
+@keyframes slide-down {
+    from {
+    margin-top: 0%;
+    height: 100%;
+    border-top-left-radius: 0px;
+    border-top-tight-radius: 0px;
+    }
+    to {
+    margin-top: 100%;
+    height: 0%;
+    border-top-left-radius: 12px;
+    border-top-tight-radius: 12px;
+    }
+}
+
+.drawerButton {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    background-color: var(--bg-primary);
+    border-color: var(--bg-tertiary);
+    bottom: 0px;
+    position: absolute;
+}
+
+.drawer h1, .drawerButton h1 {
+    margin: 16px;
+}
+
+.card {
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--fg-secondary);
+    border-radius: 16px;
+    display: flex;
+    width: auto;
+    margin: 0px 16px;
+    padding: 8px 12px;
+}
+
+.title {
+	display: flex;
+	flex-direction: row;
+	gap: 10px;
+}
+
+.status {
+	background: var(--on-time);
+	height: 22px;
+	border-radius: 16px;
+	padding: 4px 8px;
+	font-size: 0.75rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.icon {
+    margin: 4px;
+    align-self: start;
+}
+
+.logo {
+    width: 48px;
+    height: 48px;
+}
+
+.borger {
+    width: 48px;
+    height: 48px;
+}
+
+.exit {
+    cursor: pointer;
+}
+
+.searchBar {
+    border-radius: 46px;
+    margin: 16px auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--bg-primary);
+    width: 92%;
+}
+
+.searchBar * {
+    flex: 1;
+    border-radius: 46px;
+}
+
+.searchBar input {
+    flex: 69; /* what do you mean this is hacky? */
+    background-color: var(--bg-primary);
+    color: var(--fg-primary);
+    font-size: 16px;
+    height: 52px;
+    border: none;
+    margin: 0px 4px;
+}
+
+.searchBar input:focus-visible {
+    outline: none;
+}
+
+.screen {
+    z-index: 15;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none; 
+}
+
+.map {
+    z-index: -100;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.screen {
+    
+}
+
+::selection {
+	background: #666;
+}
+
+h1 {
+    font-size: 24px;
+	margin: 2px;
+	margin-bottom: 5px;
+	margin-left: 0px;
+}
+
+h2 {
+	font-size: 1.5em;
+	margin: 4px 0px;
+}
+
+h3 {
+    margin: 4px 0px;
+    font-size: 1rem;
+}
+
+p {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	line-height: 1.5;
+}
+
+a {
+	color: #fff;
+	transition-duration: 0.4s;
+}
+
+a:hover {
+	color: #ddd;
+}
+
+footer {
+	display: flex;
+	flex-direction: column;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	margin-bottom: 10px;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	padding: 10px;
+}
+
+footer > * {
+	margin-top: 10px;
+	margin-bottom: 0px;
+}
