@@ -1,7 +1,7 @@
 import Script from 'next/script'
 const TagsBlock = () => {    
     return (
-        <head>
+        <>
             <meta name='viewport' content='width=device-width, initial-scale=1'/>
     
             <Script src="https://www.googletagmanager.com/gtag/js?id=G-L3ZMMQZR55"></Script>
@@ -44,13 +44,13 @@ const TagsBlock = () => {
     		<meta name="description" content="A simple and lightweight website and PWA to track Amtrak Trains."/>
     		<meta name="keywords" content="amtrak, amtrak train, amtrak train tracking, amtrak tracking, train tracking, tracking, empire builder, southwest chief, california zephr, northeast corridor, northeast regional, acela, acela express, superliner, amfleet, viewliner, america, trains, train"/>
     		<meta name="robots" content="index, follow"/>
-    		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    		<meta httpEquiv="Content-Type" content="text/html; charset=utf-8"/>
     		<meta name="language" content="English"/>
     		<meta name="revisit-after" content="1 minutes"/>
     		<meta name="author" content="Piero LLC"/>
     
     		<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml"/>
-        </head>
+        </>
     );
 };
 
