@@ -33,14 +33,19 @@ const TrainLinks = (({trainNum, trainName}) => {
             </div>
         )
     } else {
+
+        let trainLinksList = data.map(trainDate => {
+            return (
+                <a href={`?d=${trainDate}`}>
+                    {new Date(trainDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+                </a>
+            );
+        });
+        
         return (
             <div className="trainSelector">
                 <p>Which day&#39;s train would you like to track?</p>
-                {data.map((trainDate) => {
-                    return (<a href={`?d=${trainDate}`}>
-                        {new Date(trainDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
-                    </a>)
-                })}
+                {trainLinksList}
             </div>
         )   
     }

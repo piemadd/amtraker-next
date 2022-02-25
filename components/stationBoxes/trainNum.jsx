@@ -39,13 +39,14 @@ const StationListTrainNum = ({ trainNum, trainDate }) => {
             </>
         )
     } else {
+
+        let stationBoxes = data.stations.map((station) => {
+            return <StationBox stationObj={station} dateSetting={dateSetting}/>
+        })
+        
         return (
             <>
-                {
-                    data.stations.map((station) => {
-                        <StationBox stationObj={station} dateSetting={dateSetting}/>
-                    })
-                }
+                {stationBoxes}
             </>
         )    
     }
