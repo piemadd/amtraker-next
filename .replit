@@ -4,7 +4,7 @@ run = "npm run dev"
 
 [hosting]
 route = "/"
-directory = "/out/
+directory = "/out/"
 
 #[interpreter]
 #command = [

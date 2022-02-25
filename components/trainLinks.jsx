@@ -37,9 +37,9 @@ const TrainLinks = (({trainNum, trainName}) => {
             <div className="trainSelector">
                 <p>Which day&#39;s train would you like to track?</p>
                 {data.map((trainDate) => {
-                    <a href={`?d=${trainDate}`}>
+                    return (<a href={`?d=${trainDate}`}>
                         {new Date(trainDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
-                    </a>
+                    </a>)
                 })}
             </div>
         )   
