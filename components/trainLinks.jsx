@@ -32,20 +32,15 @@ const TrainLinks = (({trainNum, trainName}) => {
                 <p>There are currently no active {trainName} trains.</p>
             </div>
         )
-    } else {
-
-        let trainLinksList = data.map(trainDate => {
-            return (
-                <a href={`?d=${trainDate}`}>
-                    {new Date(trainDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
-                </a>
-            );
-        });
-        
+    } else {        
         return (
             <div className="trainSelector">
                 <p>Which day&#39;s train would you like to track?</p>
-                {trainLinksList}
+                {data.map((trainDate) => {
+                    return (<a key={trainDate} href={`?d=${trainDate}`}>
+                        {new Date(trainDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+                    </a>)
+                })}
             </div>
         )   
     }
