@@ -1,4 +1,4 @@
-{
+exports.data = {
 	"1": "Sunset Limited",
 	"2": "Sunset Limited",
 	"3": "Southwest Chief",

@@ -9,7 +9,7 @@ const ManualTrainBox = ({ trainObj, clickable }) => {
     }
     
     return (
-        <article className={"card" + clickableClass}>
+        <article className={"card trainCard" + clickableClass}>
             <div className="meta">
                 <div className="title">
                     <h3>{trainObj.routeName}</h3>

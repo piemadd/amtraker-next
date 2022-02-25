@@ -1,13 +1,8 @@
 import ManualTrainBox from '../trainBoxes/manualTrainBox';
 import ErrorTrainBox from '../trainBoxes/errorTrainBox';
 import { useEffect, useState } from "react";
-import fetch from 'unfetch';
 
 const AutoTrainBoxObjectID = ({ objectID, clickable }) => {
-
-    //const { dataPre } = useSWR('https://api.amtraker.com/v1/trains/ids', fetcher);
-    //const fetcher = (url) => fetch(url).then(r => r.json()).catch(e => console.log('oof'))
-
     const [data, setData] = useState(null)
     const [isLoading, setLoading] = useState(false)
 
@@ -38,7 +33,7 @@ const AutoTrainBoxObjectID = ({ objectID, clickable }) => {
     if (data == null || data == undefined) {
         return (
             <>
-                <ErrorTrainBox error={"Train not found!"} errorDetails={"Whatever train should have existed doesn't (at least from what I can tell), and if you're seeing this, that means it something has terribly wrong within my code."}/>
+                <ErrorTrainBox error={"Train not found!"} errorDetails={"Whatever train should have existed doesn't (at least from what I can tell), and if you're seeing this, that means something has terribly wrong within my code."}/>
             </>
         )
     } else {

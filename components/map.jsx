@@ -11,7 +11,6 @@ const map = () => {
             center={[39.14710270770074, -96.1962890625]}
             zoom={5}
             //maxZoom={14}
-            scrollWheelZoom={false}
             tileSize={512}
             style={{ height: "100vh", width: "100vw", 'zIndex': 0, overflow: 'hidden' }}
             zoomControl={false}

@@ -2,6 +2,10 @@ entrypoint = "index.js"
 
 run = "npm run dev"
 
+[hosting]
+route = "/"
+directory = "/out/
+
 #[interpreter]
 #command = [
 #    "prybar-nodejs",
