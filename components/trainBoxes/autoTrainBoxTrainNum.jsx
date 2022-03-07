@@ -1,6 +1,7 @@
 import ManualTrainBox from '../trainBoxes/manualTrainBox';
 import ErrorTrainBox from '../trainBoxes/errorTrainBox';
 import { useEffect, useState } from "react";
+import Link from 'next/link';
 
 const AutoTrainBoxTrainNum = ({ trainNum, trainDate, clickable }) => {
     const [data, setData] = useState(null)
@@ -15,7 +16,7 @@ const AutoTrainBoxTrainNum = ({ trainNum, trainDate, clickable }) => {
                 var trainObj = {};
                 
                 for (var i = 0; i < trainData.length; i++) {
-                    if (trainData[i].origSchDep == trainDate) {
+                    if (trainData[i].origSchDep == trainDate || new Date(trainData[i].origSchDep).getDate() == trainDate) {
                         trainObj = trainData[i];
                     }                    
                 }
@@ -32,11 +33,17 @@ const AutoTrainBoxTrainNum = ({ trainNum, trainDate, clickable }) => {
                 <ErrorTrainBox error={"Train not found!"} errorDetails={"Whatever train should have existed doesn't (at least from what I can tell), and if you're seeing this, that means something has terribly wrong within my code."}/>
             </>
         )
+    } else if (clickable == 'false') {
+        return (
+            <ManualTrainBox trainObj={data} clickable={clickable}/>
+        )    
     } else {
         return (
-            <>
-                <ManualTrainBox trainObj={data} clickable={clickable}/>
-            </>
+            <Link href={`../trains/${trainNum}?d=${trainDate}`} className="trainBoxLink">
+                <a className="trainBoxLink">
+                    <ManualTrainBox trainObj={data} clickable={clickable}/>
+                </a>
+            </Link>
         )    
     }
 };

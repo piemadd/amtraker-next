@@ -38,19 +38,25 @@ const TrainLinks = (({trainNum, trainName}) => {
             <div className="trainSelector">
                 <p>Which day&#39;s train would you like to track?</p>
                 {data.map((trainDate) => {
-                    return (<p><Link key={trainDate} href={`?d=${trainDate}`}>
-                        {new Date(trainDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
-                    </Link></p>)
+                    return (
+                        <p>
+                            <Link
+                                href={{
+                                    pathname: `/trains/${trainNum}`,
+                                    query: { d: trainDate },
+                                }}
+                                key={trainDate}
+                                replace
+                                passHref
+                            >
+                                <a>{new Date(trainDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</a>
+                            </Link>
+                        </p>
+                    )
                 })}
             </div>
         )   
     }
 })
-
-/*
-{
-                
-            }
-*/
 
 export default TrainLinks;

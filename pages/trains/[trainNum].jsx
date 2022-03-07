@@ -45,27 +45,49 @@ export default function Train(params) {
             .then((res) => res.json())
             .then((dates) => {
 
-                console.log(dates)
-                
-                setDataDates(dates[params.trainNum]);
+                const justDates = [];
+
+                for (let i = 0; i < dates[params.trainNum].length; i++) {
+                    const tempDate = new Date(dates[params.trainNum][i]);
+                    justDates.push(tempDate.getDate());
+                }
+
+                setDataDates(justDates);
+                //setDataDates(dates[params.trainNum]);
                 setLoading(false)
             })
 
-        let savedTrainsList = localStorage.getItem('savedTrains') ? localStorage.getItem('savedTrains') : '[]';
-        savedTrainsList = JSON.parse(savedTrainsList);
+        console.log('checking for date idk')
         
-        console.log(typeof savedTrainsList)
-        console.log(savedTrainsList)
+        if (params.trainNum && (dataDates.includes(parseInt(startDate)) || dataDates.includes(new Date(startDate).getDate()))) {
+            
+            let savedTrainsList = localStorage.getItem('savedTrains') ? localStorage.getItem('savedTrains') : '{}';
+            savedTrainsList = JSON.parse(savedTrainsList);
 
-        savedTrainsList.push([params.trainNum, startDate]);
-        localStorage.setItem('savedTrains', JSON.stringify(savedTrainsList));
+            console.log('date exists so i should save new stuff idk!')
+            console.log(savedTrainsList)
+            console.log(params.trainNum)
+            console.log(startDate)
+    
+            savedTrainsList[`${params.trainNum}-${startDate}`] = savedTrainsList[`${params.trainNum}-${startDate}`] ? savedTrainsList[`${params.trainNum}-${startDate}`] : [];
+    
+            localStorage.setItem('savedTrains', JSON.stringify(savedTrainsList));
+        }
+        
+        
     }, [])
 
-    if (params.trainNum && dataDates.includes(startDate)) {
+    console.log(dataDates)
+    console.log(typeof dataDates[0])
+    console.log(parseInt(startDate))
+    console.log(typeof parseInt(startDate))
+    console.log(dataDates.includes(parseInt(startDate)))
+    
+
+    if (params.trainNum && (dataDates.includes(parseInt(startDate)) || dataDates.includes(new Date(startDate).getDate()))) {
         return (
             <>
                 <TagsBlockTrain trainNum={params.trainNum} trainName={params.trainName}/>
-    
         		<header>
                     <div>
             			<h2 className="clickable"><a onClick={() => router.back()}>Back</a></h2>
@@ -75,7 +97,7 @@ export default function Train(params) {
         		</header>
         
         		<main className="trainsHolder">
-        			<AutoTrainBoxTrainNum trainNum={params.trainNum} trainDate={startDate} clickable={false}/>
+        			<AutoTrainBoxTrainNum trainNum={params.trainNum} trainDate={startDate} clickable={'false'}/>
         		</main>
         
         		<header>
@@ -88,15 +110,6 @@ export default function Train(params) {
             </>
         )
     } else {
-    
-        fetch('https://api.amtraker.com/v1/trains/dates')
-            .then((res) => res.json())
-            .then((dates) => {
-                return "test"
-            })
-
-        //console.log(dataDates)
-        
         return (
             <>
                 <TagsBlockTrain trainNum={params.trainNum} trainName={params.trainName}/>

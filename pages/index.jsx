@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import Dynamic from 'next/dynamic';
+import Link from 'next/link';
 import { useState } from 'react';
+import AutoTrainBoxTrainNum from '../components/trainBoxes/autoTrainBoxTrainNum';
 
 import TagsBlock from '../components/tags'
 
@@ -15,7 +17,38 @@ const Home = (() => {
     };
     
     const activeDrawer = isActive ? null : "drawerUp";
+    return (
+        <div>
+            <TagsBlock />
+            <main className="screen">
+                <section className="searchAlign">
+                    <details class="content">
+                        <summary>
+                            Open Collapsible
+                        </summary>
+                        <AutoTrainBoxTrainNum trainNum="1" trainDate="5" clickable={true}/>
+                        <AutoTrainBoxTrainNum trainNum="1" trainDate="5" clickable={true}/>
+                        <AutoTrainBoxTrainNum trainNum="1" trainDate="5" clickable={true}/>
+                        <AutoTrainBoxTrainNum trainNum="1" trainDate="5" clickable={true}/>
+                        <AutoTrainBoxTrainNum trainNum="1" trainDate="5" clickable={true}/>
+                        <AutoTrainBoxTrainNum trainNum="1" trainDate="5" clickable={true}/>
+                        <AutoTrainBoxTrainNum trainNum="1" trainDate="5" clickable={true}/>
+                        <Link href="../trains/new">
+                            <a className="trainBoxLink">
+                                <p className="card trainCard newTrain clickableThing">+ New Train</p>    
+                            </a>
+                        </Link>
+                    </details>
+                </section>
+            </main>
+
+            <script src="../scripts/menu.js"></script>
+            
+            <MapWithNoSSR />
+        </div>
+    )
     
+    /*
     return (
         <div>
             <TagsBlock />
@@ -31,6 +64,7 @@ const Home = (() => {
             <MapWithNoSSR />
         </div>
     )
+    */
 })
 
 export default Home;

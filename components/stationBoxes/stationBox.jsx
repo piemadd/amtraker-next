@@ -23,7 +23,8 @@ const StationBox = ({ stationObj, dateSetting='both' }) => {
         'America/Los_Angeles': 'America/Los_Angeles',
 	};
 
-    let schDate = new Date(stationObj.schDep).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+    let schDateOrig = stationObj.schDep || stationObj.schArr;
+    let schDate = new Date(schDateOrig).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
 
     //time is a Date object
     //train tz is in the long format (such as America/Chicago)

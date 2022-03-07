@@ -87,80 +87,6 @@ body, #__next{
 	overflow: hidden;
 }
 
-.drawerTitle {
-    display: flex;
-    flex-direction: row;
-}
-
-.drawer {
-    display: flex;
-    overflow: hidden;
-    flex-direction: column;
-    width: 100%;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    background-color: var(--bg-primary);
-    border-color: var(--bg-tertiary);
-    bottom: 0px;
-    top: 100%;
-    position: absolute;
-    transition-timing-function: ease-in-out;
-    transition-duration: 500ms;
-    transition-property: margin-top, top, bottom, height, border-top-left-radius, border-top-right-radius;
-}
-
-.drawerUp {
-    height: 100%;
-    top: 0%;
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
-    overflow: auto;
-}
-
-@keyframes slide-up {
-    from {
-    margin-top: 100%;
-    height: 0%;
-    }
-    to {
-    margin-top: 0%;
-    height: 100%;
-    border-top-left-radius: 0px;
-    border-top-tight-radius: 0px;
-    }
-}
-
-@keyframes slide-down {
-    from {
-    margin-top: 0%;
-    height: 100%;
-    border-top-left-radius: 0px;
-    border-top-tight-radius: 0px;
-    }
-    to {
-    margin-top: 100%;
-    height: 0%;
-    border-top-left-radius: 12px;
-    border-top-tight-radius: 12px;
-    }
-}
-
-.drawerButton {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    background-color: var(--bg-primary);
-    border-color: var(--bg-tertiary);
-    bottom: 0px;
-    position: absolute;
-}
-
-.drawer h1, .drawerButton h1 {
-    margin: 16px;
-}
-
 .card {
     background-color: var(--bg-secondary);
     border-style: none;
@@ -175,6 +101,10 @@ body, #__next{
 
 .trainCard {
     margin: 12px;
+}
+
+.trainBoxLink {
+    text-decoration: none;
 }
 
 .clickableThing {
@@ -236,6 +166,7 @@ body, #__next{
 
 .searchAlign {
     width: 92%;
+    max-height: 75%;
     max-width: 600px;
     display: flex;
     align-items: left;
@@ -243,19 +174,32 @@ body, #__next{
 }
 
 .searchBar {
-    border-radius: 46px;
-    /*margin: 16px auto;*/
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    align-self: left;
     background-color: var(--bg-primary);
     width: 100%;
     max-width: 400px;
+    height: auto;
+    border-radius: 46px;
 }
 
-.searchBar * {
+.trainListHolder {
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-primary);
+    width: 100%;
+    max-width: 400px;
+    height: 75%;
+    border-radius: 46px;
+    overflow: auto;
+}
+
+nav {
     flex: 1;
+}
+
+.dropDown {
     border-radius: 46px;
 }
 
@@ -356,4 +300,53 @@ footer {
 footer > * {
     margin-top: 10px;
     margin-bottom: 0px;
+}
+
+li a {
+    text-decoration: none;
+    color: #2d2f31;
+}
+
+ul {
+    padding-left: 0px;
+}
+
+.collapsible {
+    background-color: var(--bg-primary);
+    color: #fff;
+    cursor: pointer;
+    border-radius: 32px;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+
+.active, .collapsible:hover {
+    background-color: var(--bg-secondary);
+}
+
+.content {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 32px;
+    overflow: auto;
+    transition: max-height 0.2s ease-out;
+    background-color: var(--bg-primary);
+}
+
+details[open] {
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.content summary {
+    padding: 16px;
+    border-radius: 32px;
+}
+
+.newTrain {
+    text-align: center;
 }

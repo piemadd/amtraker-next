@@ -21,7 +21,7 @@ const StationListTrainNum = ({ trainNum, trainDate }) => {
                 var trainObj = {};
                 
                 for (var i = 0; i < trainData.length; i++) {
-                    if (trainData[i].origSchDep == trainDate) {
+                    if (trainData[i].origSchDep == trainDate || new Date(trainData[i].origSchDep).getDate() == trainDate) {
                         trainObj = trainData[i];
                     }                    
                 }

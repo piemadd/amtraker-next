@@ -3,8 +3,11 @@ const ManualTrainBox = ({ trainObj, clickable }) => {
     const schDep = new Date(trainObj.origSchDep);
 
     let clickableClass = "";
+
+    console.log('clickable: ' + clickable)
+    console.log(clickable != 'false')
     
-    if (clickable != false) {
+    if (clickable != 'false') {
         clickableClass = " clickableThing"
     }
     
