@@ -1,0 +1,11 @@
+{
+  "/_app": "pages/_app.js",
+  "/": "pages/index.html",
+  "/trains/[...slug]": "pages/trains/[...slug].html",
+  "/trains/[trainNum]": "pages/trains/[trainNum].js",
+  "/trains/new": "pages/trains/new.html",
+  "/trains/saved": "pages/trains/saved.html",
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
+  "/404": "pages/404.html"
+}
