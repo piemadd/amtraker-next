@@ -344,7 +344,7 @@ exports.data = {
 	"1105": "Winter Park Express",
 	"1106": "Winter Park Express",
 	"1689": "Downeaster",
-    "2003": "The Piero Limited",
+    "2003": "Piero Limited",
 	"2103": "Acela",
 	"2122": "Acela",
 	"2126": "Acela",

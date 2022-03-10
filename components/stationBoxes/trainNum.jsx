@@ -35,18 +35,15 @@ const StationListTrainNum = ({ trainNum, trainDate }) => {
     if (!data) {
         return (
             <>
-                error lol
+                There was an error fetching the station data for this train. Please try again later or email me: piero (at) piemadd (dot) com.
             </>
         )
     } else {
-
-        let stationBoxes = data.stations.map((station) => {
-            return <StationBox key={station.code} stationObj={station} dateSetting={dateSetting}/>
-        })
-        
         return (
             <>
-                {stationBoxes}
+                {data.stations.map((station) => {
+                    return <StationBox key={station.code} stationObj={station} dateSetting={dateSetting}/>
+                })}
             </>
         )    
     }

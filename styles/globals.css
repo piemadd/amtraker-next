@@ -8,11 +8,12 @@
     --fg-secondary: #ADB5BD;
     --fg-tertiary: #868E96;
     --status: #1864AB;
-    --on-time: #1864AB;
+    --on-time: var(--status);
     --early: #2B8A3E;
     /*--late: #C92A2A;*/
     --late: #a832cc;
     --complete: #212529;
+    --no-data: var(--complete);
 }
 
 * {
@@ -88,6 +89,7 @@ body, #__next{
 }
 
 .card {
+    transition: all .1s ease-in-out;
     background-color: var(--bg-secondary);
     border-style: none;
     border-width: 1px;
@@ -96,7 +98,15 @@ body, #__next{
     display: flex;
     width: auto;
     margin: 0px;
-    padding: 8px 14px;
+    padding: 12px 12px;
+}
+
+.card:hover {
+    transform: scale(1.025);
+}
+
+.meta {
+    flex: 1;
 }
 
 .trainCard {
@@ -115,6 +125,19 @@ body, #__next{
     background-color: var(--bg-tertiary);
 }
 
+.number {
+    font-weight: 600;
+    background: var(--bg-tertiary);
+    width: 44px;
+    height: 44px;
+    border-radius: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--fg-tertiary);
+}
+
 .add {
     display: inline;
     text-align: center;
@@ -125,6 +148,7 @@ body, #__next{
     display: flex;
     flex-direction: row;
     gap: 10px;
+    flex: 1;
 }
 
 .tag {
@@ -132,7 +156,7 @@ body, #__next{
 }
 
 .status {
-    background: var(--on-time);
+    background-color: var(--on-time);
     height: 22px;
     border-radius: 16px;
     padding: 4px 8px;
@@ -143,6 +167,25 @@ body, #__next{
     text-align: center;
     margin-top: 2px;
     margin-bottom: 2px;
+    margin-right: 6px;
+    white-space: nowrap;
+    
+}
+
+.on-time {
+    background: var(--on-time);
+}
+
+.early {
+    background: var(--early);
+}
+
+.late {
+    background: var(--late);
+}
+
+.no-data {
+    background: var(--no-data);
 }
 
 .icon {
@@ -164,7 +207,7 @@ body, #__next{
     cursor: pointer;
 }
 
-.searchAlign {
+.trainsBarAlign {
     width: 92%;
     max-height: 75%;
     max-width: 600px;
@@ -173,7 +216,7 @@ body, #__next{
     margin: 12px;
 }
 
-.searchBar {
+.trainsBar {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -203,7 +246,7 @@ nav {
     border-radius: 46px;
 }
 
-.searchBar input {
+.trainsBar input {
     flex: 69; /* what do you mean this is hacky? */
     background-color: var(--bg-primary);
     color: var(--fg-primary);
@@ -213,7 +256,7 @@ nav {
     margin: 0px 4px;
 }
 
-.searchBar input:focus-visible {
+.trainsBar input:focus-visible {
     outline: none;
 }
 
@@ -349,4 +392,39 @@ details[open] {
 
 .newTrain {
     text-align: center;
+}
+
+.newPage .card {
+    margin: 0;
+    height: 100%;
+}
+
+.newPage {
+    padding: 12px;
+    overflow: scroll;
+}
+
+.searchBoxHolder {
+    margin-top: 12px;
+}
+
+.searchBoxHolder input {
+    width: 100%;
+}
+
+article.settingselector select, input {
+	display: flex;
+	align-self: center;
+	scrollbar-color: var(--bg-primary) var(--bg-secondary);
+	background-color: var(--bg-tertiary);
+	border-radius: 10px;
+	border: 0.1px solid var(--bg-primary);
+	color: var(--fg-primary);
+	font-family: 'Inter', sans-serif;
+	padding: 10px;
+}
+
+.leaflet-popup-content-wrapper {
+    background-color: var(--bg-primary) !important;
+    color: var(--fg-primary) !important;
 }

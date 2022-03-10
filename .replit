@@ -1,6 +1,8 @@
-entrypoint = "index.js"
+entrypoint = "pages/index.jsx"
 
-run = "npm run dev"
+#run = "npm run dev"
+#run = "npm run build && npm run start"
+run = "npm run start"
 
 [hosting]
 route = "/"

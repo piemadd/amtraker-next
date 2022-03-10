@@ -30,9 +30,21 @@ export default function Train(params) {
     const router = useRouter();
 
     const [dataDates, setDataDates] = useState([]);
-    const [dataIds, setDataIds] = useState([]);
+    const [backState, setBackState] = useState(false);
     const [startDate, setStartDate] = useState(null);
     const [isLoading, setLoading] = useState(false);
+
+    useEffect(() => {
+        setBackState(window.history.state.idx == 0);
+    }, [])
+
+    const ohShitGoBack = (() => {
+        if (backState) {
+            router.replace('/');
+        } else {
+            router.back();
+        }
+    })
 
     useEffect(() => {
         const urlSearchParams = new URLSearchParams(window.location.search);
@@ -44,12 +56,13 @@ export default function Train(params) {
         fetch('https://api.amtraker.com/v1/trains/dates')
             .then((res) => res.json())
             .then((dates) => {
-
                 const justDates = [];
 
-                for (let i = 0; i < dates[params.trainNum].length; i++) {
-                    const tempDate = new Date(dates[params.trainNum][i]);
-                    justDates.push(tempDate.getDate());
+                if (dates[params.trainNum] && dates[params.trainNum].length > 0) {
+                    for (let i = 0; i < dates[params.trainNum].length; i++) {
+                        const tempDate = new Date(dates[params.trainNum][i]);
+                        justDates.push(tempDate.getDate());
+                    }
                 }
 
                 setDataDates(justDates);
@@ -75,14 +88,7 @@ export default function Train(params) {
         }
         
         
-    }, [])
-
-    console.log(dataDates)
-    console.log(typeof dataDates[0])
-    console.log(parseInt(startDate))
-    console.log(typeof parseInt(startDate))
-    console.log(dataDates.includes(parseInt(startDate)))
-    
+    }, [])    
 
     if (params.trainNum && (dataDates.includes(parseInt(startDate)) || dataDates.includes(new Date(startDate).getDate()))) {
         return (
@@ -90,7 +96,7 @@ export default function Train(params) {
                 <TagsBlockTrain trainNum={params.trainNum} trainName={params.trainName}/>
         		<header>
                     <div>
-            			<h2 className="clickable"><a onClick={() => router.back()}>Back</a></h2>
+            			<h2 className="clickable"><a onClick={() => ohShitGoBack()}>Back</a></h2>
             			<h1>View Train</h1>
             			<h2 onClick={() => router.push(`/?delete=true&n=${params.trainNum}&d=${startDate}`)} className="clickable">Delete Train</h2>
                     </div>

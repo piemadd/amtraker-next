@@ -39,15 +39,12 @@ const TrainLinks = (({trainNum, trainName}) => {
                 <p>Which day&#39;s train would you like to track?</p>
                 {data.map((trainDate) => {
                     return (
-                        <p>
+                        <p key={`${trainNum}-${new Date(trainDate).getDate()}`}>
                             <Link
                                 href={{
-                                    pathname: `/trains/${trainNum}`,
-                                    query: { d: trainDate },
+                                    pathname: `/trains/${trainNum}/${new Date(trainDate).getDate()}`,
                                 }}
                                 key={trainDate}
-                                replace
-                                passHref
                             >
                                 <a>{new Date(trainDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</a>
                             </Link>
