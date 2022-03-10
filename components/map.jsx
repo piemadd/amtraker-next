@@ -112,7 +112,7 @@ const Map = (trainData) => {
                 console.log(genArrDep(entry.stations.find((station) => station.code == entry.eventCode), 2))
             
                 return (
-                    <Marker key={`${entry.trainNum}-${sch.getDate()}`} position={entry.coordinates} icon={trainIcon}>
+                    <Marker key={`${entry.trainNum}-${schDep.getDate()}`} position={entry.coordinates} icon={trainIcon}>
                         <Popup>
                             <h3>{entry.routeName}</h3>
                             <i>{entry.stations[0].stationName} --&gt; {entry.stations[entry.stations.length - 1].stationName}</i><br/>
