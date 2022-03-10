@@ -13,7 +13,7 @@ let trainIcon = L.icon({
 const Map = (trainData) => {
 
     const style = 'piemadd/ckyugw7ui000y14o2nq8we94g'
-    const token = 'pk.eyJ1IjoicGllbWFkZCIsImEiOiJja2ltYzQ5YWMwcnZtMnJxbWttcGQ2MHF4In0.eHizY2ZVCp-mp0ViI5ZIEg'
+    const token = 'pk.eyJ1IjoicGllbWFkZCIsImEiOiJjbDBsZjYxaGYwYngzM2p0NGtocmo0cHlhIn0.E1MTAeD7QLDKhrUtG2MTyA'
 
     console.log("trainData: " + trainData.trainData)
     console.log(trainData.trainData)
