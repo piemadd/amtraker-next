@@ -23,14 +23,19 @@ const AutoTrainBoxTrainNum = ({ trainNum, trainDate, clickable }) => {
                 
                 setData(trainObj)
                 setLoading(false)
+            }).catch((e) => {
+                setData(null)
+                setLoading(false)
             })
             
     }, [])
 
+    //<ErrorTrainBox error={"Train not found!"} errorDetails={"Whatever train should have existed doesn't (at least from what I can tell), and if you're seeing this, that means something has terribly wrong within my code."}/>
+
     if (data == null || data == undefined) {
         return (
             <>
-                <ErrorTrainBox error={"Train not found!"} errorDetails={"Whatever train should have existed doesn't (at least from what I can tell), and if you're seeing this, that means something has terribly wrong within my code."}/>
+                
             </>
         )
     } else if (clickable == 'false') {

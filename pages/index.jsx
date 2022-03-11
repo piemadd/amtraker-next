@@ -41,6 +41,29 @@ const Home = (() => {
 
             router.replace('/');
         }
+
+        let savedTrainsList = localStorage.getItem('savedTrains') ? localStorage.getItem('savedTrains') : '{}';
+        savedTrainsList = JSON.parse(savedTrainsList);
+
+        let trainsList = Object.keys(savedTrainsList);
+
+        console.log(savedTrainsList)
+        
+        for (let i = 0; i < trainsList.length; i++) {
+            console.log(trainsList[i].split('-')[1] < new Date().getDate() - 3)
+            console.log(trainsList[i].split('-')[1] > new Date().getDate() + 10)
+            
+            if (trainsList[i].split('-')[1] < new Date().getDate() - 3 || trainsList[i].split('-')[1] > new Date().getDate() + 10) {
+                
+                console.log('yeet ' + trainsList[i])
+                
+                delete savedTrainsList[trainsList[i]];
+            }
+        }
+
+        console.log(savedTrainsList)
+
+        localStorage.setItem('savedTrains', JSON.stringify(savedTrainsList));
     }, [])
 
     //updating trains and putting on map
