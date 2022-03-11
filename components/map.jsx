@@ -30,7 +30,7 @@ const Map = (trainData) => {
             zoom={5}
             minZoom={5}
             maxZoom={14}
-            //maxBounds={bounds}
+            maxBounds={bounds}
             tileSize={512}
             style={{ height: "100vh", width: "100vw", 'zIndex': 0, overflow: 'hidden' }}
             zoomControl={false}
