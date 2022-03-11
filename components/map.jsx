@@ -10,6 +10,10 @@ let trainIcon = L.icon({
     popupAnchor: [0, -16],
 });
 
+let southWest = L.latLng(23.133555, -126.966682);
+let northEast = L.latLng(49.100545, -65.625257);
+let bounds = L.latLngBounds(southWest, northEast);
+
 const Map = (trainData) => {
 
     const style = 'piemadd/ckyugw7ui000y14o2nq8we94g'
@@ -17,19 +21,23 @@ const Map = (trainData) => {
 
     console.log("trainData: " + trainData.trainData)
     console.log(trainData.trainData)
+
+    //url={`https://api.mapbox.com/styles/v1/${style}/tiles/{z}/{x}/{y}?access_token=${token}`}
     
     return (
         <MapContainer
             center={[39.14710270770074, -96.1962890625]}
             zoom={5}
-            //maxZoom={14}
+            minZoom={5}
+            maxZoom={14}
+            //maxBounds={bounds}
             tileSize={512}
             style={{ height: "100vh", width: "100vw", 'zIndex': 0, overflow: 'hidden' }}
             zoomControl={false}
             scrollWheelZoom={true}
         >
             <TileLayer
-                url={`https://api.mapbox.com/styles/v1/${style}/tiles/{z}/{x}/{y}?access_token=${token}`}
+                url={`https://map.amtrakle.com/{z}/{x}/{y}`}
                 attribution='Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
             />
             {trainData.trainData.map((entry) => {
