@@ -1,7 +1,7 @@
 import StationBox from '../stationBoxes/stationBox';
 import { useEffect, useState } from "react";
 
-const StationListTrainNum = ({ trainNum, trainDate }) => {
+const StationListTrainNum = ({ trainNum, eventCode, trainDate }) => {
     const [data, setData] = useState(null);
     const [dateSetting, setDateSetting] = useState(null);
     const [isLoading, setLoading] = useState(false);
@@ -38,11 +38,11 @@ const StationListTrainNum = ({ trainNum, trainDate }) => {
                 There was an error fetching the station data for this train. Please try again later or email me: piero (at) piemadd (dot) com.
             </>
         )
-    } else {
+    } else {        
         return (
             <>
                 {data.stations.map((station) => {
-                    return <StationBox key={station.code} stationObj={station} dateSetting={dateSetting}/>
+                    return <StationBox key={station.code} nextStop={(data.eventCode == station.code)} stationObj={station} dateSetting={dateSetting}/>
                 })}
             </>
         )    

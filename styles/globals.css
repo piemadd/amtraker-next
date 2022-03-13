@@ -441,3 +441,7 @@ article.settingselector select, input {
     opacity: 0.9;
     cursor: not-allowed;
 }
+
+.activeStation {
+    border-style: solid;
+}

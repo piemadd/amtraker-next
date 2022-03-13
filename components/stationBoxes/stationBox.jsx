@@ -1,5 +1,4 @@
-const StationBox = ({ stationObj, dateSetting='train' }) => {
-
+const StationBox = ({ stationObj, nextStop='false', dateSetting='train' }) => {    
     const timelyClasses = {
     	'Late': 'late',
     	'Early': 'early',
@@ -69,8 +68,8 @@ const StationBox = ({ stationObj, dateSetting='train' }) => {
         let arrCmntFixed = (arrCmnt == 'ON TIME') ? '' : arrCmnt.replace(" MI", "m").replace(' HR', 'h').replace("EARLY", "Early").replace("LATE", "Late");
         let depCmntFixed = (depCmnt == 'ON TIME') ? '' : depCmnt.replace(" MI", "m").replace(' HR', 'h').replace("EARLY", "Early").replace("LATE", "Late");
 
-        console.log(arrCmntFixed)
-        console.log(depCmntFixed)
+        //console.log(arrCmntFixed)
+        //console.log(depCmntFixed)
         
         let arrText = arr ? `<span class="tag">Arrival: </span>${makeTime(arr, stationObj.tz, dateSetting)} ${arrCmntFixed ? `(${arrCmntFixed})` : ''}` : '';
         let depText = dep ? `<span class="tag">Departure: </span>${makeTime(dep, stationObj.tz, dateSetting)} ${depCmntFixed ? `(${depCmntFixed})` : ''}` : '';
@@ -86,9 +85,11 @@ const StationBox = ({ stationObj, dateSetting='train' }) => {
             />
         )
     })
+
+    let isNextStop = (nextStop != false) ? ' activeStation' : '';
     
     return (
-        <a className="card" id={stationObj.code}>
+        <a className={"card" + isNextStop} id={stationObj.code}>
             <div className="meta">
                 <div className="title">
                     <h3>{`${stationObj.stationName} (${stationObj.code})`}</h3>
