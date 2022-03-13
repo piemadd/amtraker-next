@@ -1,8 +1,8 @@
 entrypoint = "pages/index.jsx"
 
 #run = "npm run dev"
-run = "npm run build && npm run start"
-#run = "npm run start"
+#run = "npm run build && npm run start"
+run = "npm run start"
 #run = "npm run static"
 
 [hosting]
