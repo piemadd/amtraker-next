@@ -1,0 +1,14 @@
+[
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "com.amtrak.piero",
+            "sha256_cert_fingerprints": [
+                "7F:7B:38:4A:C2:70:E3:40:FE:3F:74:7A:D9:F6:45:35:4C:42:DF:9D:EC:CD:65:53:6F:19:6E:4F:E1:93:A2:1D"
+            ]
+        }
+    }
+]

@@ -1,0 +1,77 @@
+{
+	"name": "Amtrak Train Tracker | Amtraker",
+	"short_name": "Amtraker",
+	"start_url": "/",
+	"display": "standalone",
+	"background_color": "#151718",
+	"theme_color": "#151718",
+	"orientation": "any",
+	"prefer_related_applications": true,
+	"related_applications": [
+		{
+			"platform": "play",
+			"id": "com.amtrak.piero"
+		}
+	],
+	"icons": [
+		{
+			"src": "/images/icons/icon-72.png",
+			"type": "image/png",
+			"sizes": "72x72"
+		},
+		{
+			"src": "/images/icons/icon-512.png",
+			"type": "image/png",
+			"sizes": "512x512",
+			"purpose": "any maskable"
+		}
+	],
+	"screenshots": [
+		{
+			"src": "/images/screenshots/ind-phone.png",
+			"sizes": "1440x3200",
+			"type": "image/png"
+		},
+		{
+			"src": "/images/screenshots/ind-tablet.png",
+			"sizes": "2160x1620",
+			"type": "image/png"
+	},
+	{
+			"src": "/images/screenshots/new-phone.png",
+			"sizes": "1440x3200",
+			"type": "image/png"
+		},
+		{
+			"src": "/images/screenshots/new-tablet.png",
+			"sizes": "2160x1620",
+			"type": "image/png"
+	},
+	{
+			"src": "/images/screenshots/view-phone.png",
+			"sizes": "1440x3200",
+			"type": "image/png"
+		},
+		{
+			"src": "/images/screenshots/view-tablet.png",
+			"sizes": "2160x1620",
+			"type": "image/png"
+	}
+	],
+	"shortcuts": [
+		{
+			"name": "View My Trains",
+			"short_name": "View Trains",
+			"description": "View the list of trains you're tracking.",
+			"url": "/",
+			"icons": [{ "src": "/images/icons/view.png", "sizes": "192x192" }]
+		},
+		{
+			"name": "Track New Train",
+			"short_name": "New Train",
+			"description": "Add a train to the list of trains you're tracking.",
+			"url": "/new.html",
+			"icons": [{ "src": "/images/icons/add.png", "sizes": "192x192" }]
+		}
+	]
+}

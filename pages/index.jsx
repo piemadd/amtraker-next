@@ -101,6 +101,9 @@ const Home = (() => {
     
     return (
         <div>
+            <Head>
+                <link rel="manifest" href="/manifest.json" />
+            </Head>
             <TagsBlock />
             <main className="screen">
                 <section className="trainsBarAlign">
