@@ -1,4 +1,4 @@
-const StationBox = ({ stationObj, dateSetting='both' }) => {
+const StationBox = ({ stationObj, dateSetting='train' }) => {
 
     const timelyClasses = {
     	'Late': 'late',
@@ -22,6 +22,8 @@ const StationBox = ({ stationObj, dateSetting='both' }) => {
 		'PDT': 'America/Los_Angeles',
         'America/Los_Angeles': 'America/Los_Angeles',
 	};
+
+    const arrOrDep = (stationObj.postDep || stationObj.postArr) ? 'Actual' : 'Estimated'
 
     let schDateOrig = stationObj.schDep || stationObj.schArr;
     let schDate = new Date(schDateOrig).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
@@ -56,9 +58,22 @@ const StationBox = ({ stationObj, dateSetting='both' }) => {
         // get whichever one exists fro arrival and departure
         let arr = stationObj.estArr ? stationObj.estArr : stationObj.postArr;
         let dep = stationObj.estDep ? stationObj.estDep : stationObj.postDep;
+
+        let estArrTimely = stationObj.estArrCmnt ? stationObj.estArrCmnt : undefined;
+        let estDepTimely = stationObj.estDepCmnt ? stationObj.estDepCmnt : undefined;
+        let postTimely = stationObj.postCmnt ? stationObj.postCmnt : '';
+
+        let arrCmnt = estArrTimely ? estArrTimely : postTimely;
+        let depCmnt = estDepTimely ? estDepTimely : postTimely;
+
+        let arrCmntFixed = (arrCmnt == 'ON TIME') ? '' : arrCmnt.replace(" MI", "m").replace(' HR', 'h').replace("EARLY", "Early").replace("LATE", "Late");
+        let depCmntFixed = (depCmnt == 'ON TIME') ? '' : depCmnt.replace(" MI", "m").replace(' HR', 'h').replace("EARLY", "Early").replace("LATE", "Late");
+
+        console.log(arrCmntFixed)
+        console.log(depCmntFixed)
         
-        let arrText = arr ? `<span class="tag">Arrival: </span>${makeTime(arr, stationObj.tz, dateSetting)}` : '';
-        let depText = dep ? `<span class="tag">Departure: </span>${makeTime(dep, stationObj.tz, dateSetting)}` : '';
+        let arrText = arr ? `<span class="tag">Arrival: </span>${makeTime(arr, stationObj.tz, dateSetting)} (${arrCmntFixed})` : '';
+        let depText = dep ? `<span class="tag">Departure: </span>${makeTime(dep, stationObj.tz, dateSetting)} (${depCmntFixed})` : '';
 
         return (
             <div 
@@ -80,7 +95,7 @@ const StationBox = ({ stationObj, dateSetting='both' }) => {
                     <div className={"status " + timelyClasses[stationObj.stationTimely]}>{stationObj.stationTimely}</div>
                 </div>
                 <p className="route">{schDate}</p>
-                <p className="route">Arrival/Departure:</p>
+                <p className="route">{arrOrDep} Arrival/Departure:</p>
                 {genArrDep(stationObj, dateSetting)}
             </div>
         </a>

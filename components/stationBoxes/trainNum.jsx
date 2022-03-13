@@ -9,7 +9,7 @@ const StationListTrainNum = ({ trainNum, trainDate }) => {
     const [count, setCount] = useState(0);
   
     useEffect(() => {
-        setDateSetting(localStorage.getItem('dateSetting') ? localStorage.getItem('dateSetting') : 'both')
+        setDateSetting(localStorage.getItem('dateSetting') ? localStorage.getItem('dateSetting') : 'train')
     });
 
     useEffect(() => {

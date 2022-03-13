@@ -10,12 +10,12 @@ const ManualTrainBox = ({ trainObj, clickable }) => {
     if (clickable != 'false') {
         clickableClass = " clickableThing"
     }
-
+    
     //dont ask
-    let velocity = trainObj.velocity ? trainObj.velocity : 0;
+    const velocity = trainObj.velocity ? trainObj.velocity : 0;
 
     //thanks norfolk southern
-    let trainTimely = trainObj.trainTimely ? trainObj.trainTimely : "No Data";
+    const trainTimely = trainObj.trainTimely ? trainObj.trainTimely : "No Data";
     
     return (
         <article className={"card trainCard" + clickableClass}>

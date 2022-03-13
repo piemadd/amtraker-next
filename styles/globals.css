@@ -381,8 +381,7 @@ ul {
 }
 
 details[open] {
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
+    border-radius: 12px;
 }
 
 .content summary {
