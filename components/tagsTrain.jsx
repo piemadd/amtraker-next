@@ -1,8 +1,16 @@
-import Script from 'next/script'
-const TagsBlockTrain = ({ trainNum, trainName }) => {    
+import Script from 'next/script';
+import { useRouter } from 'next/router';
+
+const TagsBlockTrain = ({ trainNum, trainName, trainDate='false' }) => {    
+
+    const router = useRouter()
+    
     return (
         <>
             <meta name='viewport' content='width=device-width, initial-scale=1'/>
+
+            <link rel="alternate" type="application/json+oembed" href={`https://api.amtraker.com/v2/oembed?url=${encodeURIComponent(`https://amtraker.com${router.asPath}`)}`} title={"Amtrak Train " + trainName + " Tracker (Amtrak Train " + trainNum + " Tracker) | Amtraker"} />
+            <link rel="alternate" type="text/xml+oembed" href={`https://api.amtraker.com/v2/oembed?url=${encodeURIComponent(`https://amtraker.com${router.asPath}&xml=true`)}`} title={"Amtrak Train " + trainName + " Tracker (Amtrak Train " + trainNum + " Tracker) | Amtraker"} />
     
             <Script src="https://www.googletagmanager.com/gtag/js?id=G-L3ZMMQZR55"></Script>
             <script

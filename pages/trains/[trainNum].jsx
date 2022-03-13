@@ -100,7 +100,7 @@ export default function Train(params) {
     if (params.trainNum && (dataDates.includes(parseInt(startDate)) || dataDates.includes(new Date(startDate).getDate()))) {
         return (
             <>
-                <TagsBlockTrain trainNum={params.trainNum} trainName={params.trainName}/>
+                <TagsBlockTrain trainNum={params.trainNum} trainName={params.trainName} trainDate={startDate}/>
         		<header>
                     <div>
             			<h2 className="clickable"><a onClick={() => ohShitGoBack()}>{embedState ? '' : 'Back'}</a></h2>
