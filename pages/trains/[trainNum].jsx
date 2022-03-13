@@ -31,6 +31,7 @@ export default function Train(params) {
 
     const [dataDates, setDataDates] = useState([]);
     const [backState, setBackState] = useState(false);
+    const [embedState, setEmbedState] = useState(false);
     const [startDate, setStartDate] = useState(null);
     const [isLoading, setLoading] = useState(false);
 
@@ -51,6 +52,12 @@ export default function Train(params) {
         const localParamsTemp = Object.fromEntries(urlSearchParams.entries());
 
         setStartDate(localParamsTemp.d);
+        setEmbedState((localParamsTemp.embed == 'true') ? true : false);
+
+        console.log("embed state:")
+        console.log(embedState)
+        console.log("embed state raw:")
+        console.log(localParamsTemp.embed)
         
         setLoading(true)
         fetch('https://api.amtraker.com/v1/trains/dates')
@@ -96,9 +103,9 @@ export default function Train(params) {
                 <TagsBlockTrain trainNum={params.trainNum} trainName={params.trainName}/>
         		<header>
                     <div>
-            			<h2 className="clickable"><a onClick={() => ohShitGoBack()}>Back</a></h2>
-            			<h1>View Train</h1>
-            			<h2 onClick={() => router.push(`/?delete=true&n=${params.trainNum}&d=${startDate}`)} className="clickable">Delete Train</h2>
+            			<h2 className="clickable"><a onClick={() => ohShitGoBack()}>{embedState ? '' : 'Back'}</a></h2>
+            			<h1>{embedState ? 'Amtraker - Amtrak Train Tracker' : 'View Train'}</h1>
+            			<h2 onClick={() => router.push(`/?delete=true&n=${params.trainNum}&d=${startDate}`)} className="clickable">{embedState ? '' : 'Delete Train'}</h2>
                     </div>
         		</header>
         
