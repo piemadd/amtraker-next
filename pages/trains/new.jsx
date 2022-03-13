@@ -84,7 +84,8 @@ function NewTrain() {
 
                     let greyedLink = (greyed == 'true') ? ' alreadyExists' : '';
 
-                    let linkHref = (greyed == 'true') ? `/?add=true&n=${trainDataInd.trainNum}&d=${new Date(trainDataInd.origSchDep).getDate()}` : '';
+                    let linkHref = (greyed != 'true') ? `/?add=true&n=${trainDataInd.trainNum}&d=${new Date(trainDataInd.origSchDep).getDate()}` : '';
+                    console.log(linkHref)
 
                     console.log('greyed: ' + greyed)
                     console.log('greyedLink: ' + greyedLink)
