@@ -72,8 +72,8 @@ const StationBox = ({ stationObj, dateSetting='train' }) => {
         console.log(arrCmntFixed)
         console.log(depCmntFixed)
         
-        let arrText = arr ? `<span class="tag">Arrival: </span>${makeTime(arr, stationObj.tz, dateSetting)} (${arrCmntFixed})` : '';
-        let depText = dep ? `<span class="tag">Departure: </span>${makeTime(dep, stationObj.tz, dateSetting)} (${depCmntFixed})` : '';
+        let arrText = arr ? `<span class="tag">Arrival: </span>${makeTime(arr, stationObj.tz, dateSetting)} ${arrCmntFixed ? `(${arrCmntFixed})` : ''}` : '';
+        let depText = dep ? `<span class="tag">Departure: </span>${makeTime(dep, stationObj.tz, dateSetting)} ${depCmntFixed ? `(${depCmntFixed})` : ''}` : '';
 
         return (
             <div 

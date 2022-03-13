@@ -92,18 +92,35 @@ const Map = (trainData) => {
                 })
 
                 const genArrDep = ((stationObj, dateSetting) => {
+
+                    console.log(dateSetting)
                     // get whichever one exists fro arrival and departure
                     let arr = stationObj.estArr ? stationObj.estArr : stationObj.postArr;
                     let dep = stationObj.estDep ? stationObj.estDep : stationObj.postDep;
+
+                    let estArrTimely = stationObj.estArrCmnt ? stationObj.estArrCmnt : undefined;
+                    let estDepTimely = stationObj.estDepCmnt ? stationObj.estDepCmnt : undefined;
+                    let postTimely = stationObj.postCmnt ? stationObj.postCmnt : '';
+            
+                    let arrCmnt = estArrTimely ? estArrTimely : postTimely;
+                    let depCmnt = estDepTimely ? estDepTimely : postTimely;
+            
+                    let arrCmntFixed = (arrCmnt == 'ON TIME') ? '' : arrCmnt.replace(" MI", "m").replace(' HR', 'h').replace("EARLY", "Early").replace("LATE", "Late");
+                    let depCmntFixed = (depCmnt == 'ON TIME') ? '' : depCmnt.replace(" MI", "m").replace(' HR', 'h').replace("EARLY", "Early").replace("LATE", "Late");
                     
-                    let arrText = arr ? `Arrival: ${makeTime(arr, stationObj.tz, dateSetting)}` : '';
-                    let depText = dep ? `Departure: ${makeTime(dep, stationObj.tz, dateSetting)}` : '';
+                    console.log(arrCmntFixed)
+                    console.log(depCmntFixed)
+                    
+                    let arrText = arr ? `<span class="tag">Arrival: </span>${makeTime(arr, stationObj.tz, dateSetting)} ${arrCmntFixed ? `(${arrCmntFixed})` : ''}` : '';
+                    let depText = dep ? `<span class="tag">Departure: </span>${makeTime(dep, stationObj.tz, dateSetting)} ${depCmntFixed ? `(${depCmntFixed})` : ''}` : '';
+
+                    const arrOrDep = (stationObj.postDep || stationObj.postArr) ? 'Actual' : 'Estimated'
             
                     return (
                         <div 
                             dangerouslySetInnerHTML={{
                                 __html: `
-                                    <p>Arrival/Departure: Device Time (Train Time)<br/>
+                                    <p>${arrOrDep} Arrival/Departure: <br/>
                                     ${arrText}<br/>
                                     ${depText}</p>
                                 `,
@@ -118,7 +135,7 @@ const Map = (trainData) => {
                 //thanks norfolk southern
                 let trainTimely = entry.trainTimely ? entry.trainTimely : "No Data";
 
-                console.log(genArrDep(entry.stations.find((station) => station.code == entry.eventCode), 2))
+                console.log(genArrDep(entry.stations.find((station) => station.code == entry.eventCode), 'train'))
             
                 return (
                     <Marker key={`${entry.trainNum}-${schDep.getDate()}`} position={entry.coordinates} icon={trainIcon}>
@@ -127,7 +144,7 @@ const Map = (trainData) => {
                             <i>{entry.stations[0].stationName} --&gt; {entry.stations[entry.stations.length - 1].stationName}</i><br/>
                             {months[schDep.getMonth()]} {schDep.getDate()}, {schDep.getFullYear()}<br/><br/>
                             {trainTimely} - {velocity.toFixed(2)} mph<br/>
-                            {genArrDep(entry.stations.find((station) => station.code == entry.eventCode), 2)}
+                            {genArrDep(entry.stations.find((station) => station.code == entry.eventCode), 'train')}
                             <i>Last Updated {new Date(entry.updatedAt).toLocaleTimeString('en-US')}</i><br/>
                             <i>Last Train Transpond {new Date(entry.lastValTS).toLocaleTimeString('en-US')}</i><br/><br/>
                             <Link href={`/trains/${entry.trainNum}?d=${schDep.getDate()}`}>

@@ -427,3 +427,17 @@ article.settingselector select, input {
     background-color: var(--bg-primary) !important;
     color: var(--fg-primary) !important;
 }
+
+.alreadyExists {
+    pointer-events: none;
+    color: currentColor;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.alreadyExists * {
+    pointer-events: none;
+    color: currentColor;
+    opacity: 0.9;
+    cursor: not-allowed;
+}

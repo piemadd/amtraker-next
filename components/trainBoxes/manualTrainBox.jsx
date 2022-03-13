@@ -1,14 +1,19 @@
-const ManualTrainBox = ({ trainObj, clickable }) => {    
+const ManualTrainBox = ({ trainObj, clickable, greyed = 'false' }) => {    
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     const schDep = new Date(trainObj.origSchDep);
 
     let clickableClass = "";
+    let greyedClass = "";
 
     //console.log('clickable: ' + clickable)
     //console.log(clickable != 'false')
     
     if (clickable != 'false') {
-        clickableClass = " clickableThing"
+        clickableClass = " clickableThing";
+    }
+
+    if (greyed != 'false') {
+        greyedClass = " alreadyExists";
     }
     
     //dont ask
@@ -18,7 +23,7 @@ const ManualTrainBox = ({ trainObj, clickable }) => {
     const trainTimely = trainObj.trainTimely ? trainObj.trainTimely : "No Data";
     
     return (
-        <article className={"card trainCard" + clickableClass}>
+        <article className={"card trainCard" + clickableClass + greyedClass}>
             <div className="meta">
                 <div className="title">
                     <h3>{trainObj.routeName}</h3>

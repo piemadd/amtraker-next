@@ -3,7 +3,7 @@ import ErrorTrainBox from '../trainBoxes/errorTrainBox';
 import { useEffect, useState } from "react";
 import Link from 'next/link';
 
-const AutoTrainBoxTrainNum = ({ trainNum, trainDate, clickable }) => {
+const AutoTrainBoxTrainNum = ({ trainNum, trainDate, clickable, greyed = 'false' }) => {
     const [data, setData] = useState(null)
     const [isLoading, setLoading] = useState(false)
 
@@ -40,7 +40,7 @@ const AutoTrainBoxTrainNum = ({ trainNum, trainDate, clickable }) => {
         )
     } else if (clickable == 'false') {
         return (
-            <ManualTrainBox trainObj={data} clickable={clickable}/>
+            <ManualTrainBox trainObj={data} clickable={clickable} greyed={greyed}/>
         )    
     } else {
         return (

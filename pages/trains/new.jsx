@@ -32,6 +32,11 @@ function NewTrain() {
             trainListFull.push(trainData[trainNums[i]][j]);
         }
     }
+
+    const [alreadySavedTrains, setAlreadySavedTrains] = useState([]);
+    useEffect(() => {
+        setAlreadySavedTrains(Object.keys(JSON.parse(localStorage.getItem('savedTrains'))))
+    }, [])
     
     const fuseOptions = {
         includeScore: true,
@@ -69,10 +74,25 @@ function NewTrain() {
     
             <main className="trainsHolder newPage">
                 {trainResults.map((trainDataInd) => {
+
+                    let greyed = 'false';
+                    console.log(alreadySavedTrains)
+                    if (alreadySavedTrains.includes(`${trainDataInd.trainNum}-${new Date(trainDataInd.origSchDep).getDate()}`)) {
+                        console.log(`${trainDataInd.trainNum}-${new Date(trainDataInd.origSchDep).getDate()}`)
+                        greyed = 'true';
+                    }
+
+                    let greyedLink = (greyed == 'true') ? ' alreadyExists' : '';
+
+                    let linkHref = (greyed == 'true') ? `/?add=true&n=${trainDataInd.trainNum}&d=${new Date(trainDataInd.origSchDep).getDate()}` : '';
+
+                    console.log('greyed: ' + greyed)
+                    console.log('greyedLink: ' + greyedLink)
+            
                     return (
-                        <Link key={`${trainDataInd.trainNum}-${new Date(trainDataInd.origSchDep).getDate()}`} href={`/?add=true&n=${trainDataInd.trainNum}&d=${new Date(trainDataInd.origSchDep).getDate()}`} className="trainBoxLink">
-                            <a className="trainBoxLink">
-                                <ManualTrainBox trainObj={trainDataInd} clickable={true}/>
+                        <Link key={`${trainDataInd.trainNum}-${new Date(trainDataInd.origSchDep).getDate()}`} href={linkHref} className={"trainBoxLink" + greyedLink}>
+                            <a className={"trainBoxLink" + greyedLink}>
+                                <ManualTrainBox trainObj={trainDataInd} clickable={greyed ? 'false' : 'true'} greyed={greyed}/>
                             </a>
                         </Link>
                     )
