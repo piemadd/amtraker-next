@@ -445,3 +445,8 @@ article.settingselector select, input {
 .activeStation {
     border-style: solid;
 }
+
+.showAllTrains {
+    position: absolute;
+    
+}

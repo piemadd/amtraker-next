@@ -120,7 +120,8 @@ const Map = (trainData) => {
                         <div 
                             dangerouslySetInnerHTML={{
                                 __html: `
-                                    <p>${arrOrDep} Arrival/Departure: <br/>
+                                    <p><span class="tag">Next Destination:</span> ${stationObj.stationName}<br/><br/>
+                                    ${arrOrDep} Arrival/Departure: <br/>
                                     ${arrText}<br/>
                                     ${depText}</p>
                                 `,

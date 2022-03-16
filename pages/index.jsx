@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router'
 import AutoTrainBoxTrainNum from '../components/trainBoxes/autoTrainBoxTrainNum';
+import ShowAllCheckBox from '../components/showAll'
 
 import TagsBlock from '../components/tags'
 
@@ -134,3 +135,5 @@ const Home = (() => {
 })
 
 export default Home;
+
+//<ShowAllCheckBox />
