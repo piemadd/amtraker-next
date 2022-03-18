@@ -447,6 +447,12 @@ article.settingselector select, input {
 }
 
 .showAllTrains {
+    display: flex;
+    padding: 12px 12px 12px 10px;
+    border-top-right-radius: 16px;
+    background-color: var(--bg-primary);
     position: absolute;
-    
+    z-index: 999;
+    bottom: 0px;
+    left: 0px;
 }

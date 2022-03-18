@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router'
 import AutoTrainBoxTrainNum from '../components/trainBoxes/autoTrainBoxTrainNum';
-import ShowAllCheckBox from '../components/showAll'
 
 import TagsBlock from '../components/tags'
 
@@ -17,6 +16,11 @@ const Home = (() => {
     });
 
     const [trainData, setTrainData] = useState([]);
+    const [showAll, setShowAll] = useState(false);
+
+    const handleShowAll = ((e) => {
+        setShowAll(e.target.checked)
+    })
 
     useEffect(() => {
         const urlSearchParams = new URLSearchParams(window.location.search);
@@ -72,32 +76,58 @@ const Home = (() => {
         let savedTrainsList = localStorage.getItem('savedTrains') ? localStorage.getItem('savedTrains') : '{}';
         savedTrainsList = JSON.parse(savedTrainsList);
 
-        let trainKeys = Object.keys(savedTrainsList);
-        for (let i = 0; i < trainKeys.length; i++) {
-            console.log(trainKeys[i])
-            fetch(`https://api.amtraker.com/v1/trains/${trainKeys[i].split('-')[0]}`)
+        console.log('client')
+        console.log("showAll: " + showAll + "(" + typeof showAll + ")")
+        console.log(trainData)
+
+        if (showAll) {
+
+            console.log('oh yeah use my data daddy')
+            
+            fetch('https://api.amtraker.com/v1/trains')
                 .then((res) => res.json())
                 .then((receivedTrainData) => {
 
-                    for (let j = 0; j < receivedTrainData.length; j++) {
-                        if (new Date(receivedTrainData[j].origSchDep).getDate() == parseInt(trainKeys[i].split('-')[1])) {
+                    const finalTrainsList = [];
+                    const finalTrainsKeys = Object.keys(receivedTrainData)
 
-                            console.log(new Date(receivedTrainData[j].origSchDep).getDate())
-                            console.log(parseInt(trainKeys[i].split('-')[1]))
-                            console.log(new Date(receivedTrainData[j].origSchDep).getDate() == parseInt(trainKeys[i].split('-')[1]))
-                            console.log(receivedTrainData[j])
-                            //let trainDataTemp = trainData.map((entry) => entry);
-                            //trainDataTemp.push(receivedTrainData[j])
-                            
-                            //setTrainData(trainDataTemp);
-                            setTrainData(trainData => [...trainData, receivedTrainData[j]]);
+                    for (let i = 0; i < finalTrainsKeys.length; i++) {
+                        const tempTrainData = receivedTrainData[finalTrainsKeys[i]];
+                        for (let j = 0; j < tempTrainData.length; j++) {
+                            finalTrainsList.push(tempTrainData[j]);
+                            console.log(finalTrainsList.length)
                         }
                     }
+
+                    console.log(finalTrainsList)
+
+                    setTrainData(finalTrainsList);
                 })
+        } else {
+            let trainKeys = Object.keys(savedTrainsList);
+            for (let i = 0; i < trainKeys.length; i++) {
+                console.log(trainKeys[i])
+                fetch(`https://api.amtraker.com/v1/trains/${trainKeys[i].split('-')[0]}`)
+                    .then((res) => res.json())
+                    .then((receivedTrainData) => {
+    
+                        for (let j = 0; j < receivedTrainData.length; j++) {
+                            if (new Date(receivedTrainData[j].origSchDep).getDate() == parseInt(trainKeys[i].split('-')[1])) {
+                                setTrainData(trainData => [...trainData, receivedTrainData[j]]);
+                            }
+
+                            console.log('setting train data for only saved trains')
+                            
+                            console.log(trainData)
+                        }
+                    })
+            }
         }
         
-    }, []);
+    }, [showAll]);
 
+    console.log('server')
+    console.log("showAll: " + showAll + "(" + typeof showAll + ")")
     console.log(trainData)
     
     return (
@@ -130,10 +160,12 @@ const Home = (() => {
             <script async src="../scripts/menu.js"></script>
             
             <MapWithNoSSR trainData={trainData}/>
+            <span className="showAllTrains">
+                Show All Trains
+                <input type="checkbox" id="showAllTrains" name="showAllTrains" value="showAll" onClick={handleShowAll}/>
+            </span>
         </div>
     )
 })
 
 export default Home;
-
-//<ShowAllCheckBox />

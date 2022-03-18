@@ -2,22 +2,15 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from 'leaflet';
 import "leaflet/dist/leaflet.css";
 import Link from 'next/link';
-
-let trainIcon = L.icon({
-    iconUrl: '/icons/placeholdericon.png',
-    iconSize: [32, 32],
-    iconAnchor: [16, 16],
-    popupAnchor: [0, -16],
-});
-
-let southWest = L.latLng(23.133555, -126.966682);
-let northEast = L.latLng(49.100545, -65.625257);
+ 
+let southWest = L.latLng(19.415580, -128.807311);
+let northEast = L.latLng(62.387941, -56.355762);
 let bounds = L.latLngBounds(southWest, northEast);
 
 const Map = (trainData) => {
 
-    const style = 'piemadd/ckyugw7ui000y14o2nq8we94g'
-    const token = 'pk.eyJ1IjoicGllbWFkZCIsImEiOiJjbDBsZjYxaGYwYngzM2p0NGtocmo0cHlhIn0.E1MTAeD7QLDKhrUtG2MTyA'
+    //const style = 'piemadd/ckyugw7ui000y14o2nq8we94g'
+    //const token = 'pk.eyJ1IjoicGllbWFkZCIsImEiOiJjbDBsZjYxaGYwYngzM2p0NGtocmo0cHlhIn0.E1MTAeD7QLDKhrUtG2MTyA'
 
     console.log("trainData: " + trainData.trainData)
     console.log(trainData.trainData)
@@ -28,7 +21,7 @@ const Map = (trainData) => {
         <MapContainer
             center={[39.14710270770074, -96.1962890625]}
             zoom={5}
-            minZoom={5}
+            minZoom={0}
             maxZoom={14}
             wheelPxPerZoomLevel={120}
             maxBounds={bounds}
@@ -137,6 +130,14 @@ const Map = (trainData) => {
                 let trainTimely = entry.trainTimely ? entry.trainTimely : "No Data";
 
                 console.log(genArrDep(entry.stations.find((station) => station.code == entry.eventCode), 'train'))
+
+                //https://beta.amtraker.com/trainicons/1-late
+                let trainIcon = L.icon({
+                    iconUrl: `/images/trainicons/${entry.trainNum}-${trainTimely.toLowerCase().split(' ').join('')}.svg`,
+                    iconSize: [32, 32],
+                    iconAnchor: [16, 16],
+                    popupAnchor: [0, -16],
+                });
             
                 return (
                     <Marker key={`${entry.trainNum}-${schDep.getDate()}`} position={entry.coordinates} icon={trainIcon}>

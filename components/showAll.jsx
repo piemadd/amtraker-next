@@ -1,6 +1,9 @@
 const ShowAllCheckBox = (() => {
     return (
-        <input type="checkbox" className="showAllTrains" id="showAllTrains" name="showAllTrains" value="showAll"/>
+        <span className="showAllTrains">
+            Show All Trains
+            <input type="checkbox" id="showAllTrains" name="showAllTrains" value="showAll"/>
+        </span>
     )
 })
 
