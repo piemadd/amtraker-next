@@ -80,7 +80,7 @@ const Home = (() => {
         console.log("showAll: " + showAll + "(" + typeof showAll + ")")
         console.log(trainData)
 
-        if (showAll) {
+        if (showAll) { //i stg...
 
             console.log('oh yeah use my data daddy')
             
@@ -104,6 +104,9 @@ const Home = (() => {
                     setTrainData(finalTrainsList);
                 })
         } else {
+
+			setTrainData([]);
+			
             let trainKeys = Object.keys(savedTrainsList);
             for (let i = 0; i < trainKeys.length; i++) {
                 console.log(trainKeys[i])
@@ -123,6 +126,8 @@ const Home = (() => {
                     })
             }
         }
+
+		console.log(trainData)
         
     }, [showAll]);
 

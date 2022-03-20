@@ -1,7 +1,9 @@
 import Script from 'next/script'
+import Head from 'next/head'
+
 const TagsBlock = () => {    
     return (
-        <>
+        <Head>
             <meta name='viewport' content='width=device-width, initial-scale=1'/>
     
             <Script src="https://www.googletagmanager.com/gtag/js?id=G-L3ZMMQZR55"></Script>
@@ -50,7 +52,7 @@ const TagsBlock = () => {
     		<meta name="author" content="Piero LLC"/>
     
     		<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml"/>
-        </>
+        </Head>
     );
 };
 

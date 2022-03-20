@@ -24,7 +24,7 @@ const sizing = {
     },
     4: {
         'outer': '256',
-        'inner': '128'
+        'inner': '242'
     }
 }
 

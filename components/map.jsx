@@ -12,8 +12,8 @@ const Map = (trainData) => {
     //const style = 'piemadd/ckyugw7ui000y14o2nq8we94g'
     //const token = 'pk.eyJ1IjoicGllbWFkZCIsImEiOiJjbDBsZjYxaGYwYngzM2p0NGtocmo0cHlhIn0.E1MTAeD7QLDKhrUtG2MTyA'
 
-    console.log("trainData: " + trainData.trainData)
-    console.log(trainData.trainData)
+    //console.log("trainData: " + trainData.trainData)
+    //console.log(trainData.trainData)
 
     //url={`https://api.mapbox.com/styles/v1/${style}/tiles/{z}/{x}/{y}?access_token=${token}`}
     
@@ -86,7 +86,7 @@ const Map = (trainData) => {
 
                 const genArrDep = ((stationObj, dateSetting) => {
 
-                    console.log(dateSetting)
+                    //console.log(dateSetting)
                     // get whichever one exists fro arrival and departure
                     let arr = stationObj.estArr ? stationObj.estArr : stationObj.postArr;
                     let dep = stationObj.estDep ? stationObj.estDep : stationObj.postDep;
@@ -101,8 +101,8 @@ const Map = (trainData) => {
                     let arrCmntFixed = (arrCmnt == 'ON TIME') ? '' : arrCmnt.replace(" MI", "m").replace(' HR', 'h').replace("EARLY", "Early").replace("LATE", "Late");
                     let depCmntFixed = (depCmnt == 'ON TIME') ? '' : depCmnt.replace(" MI", "m").replace(' HR', 'h').replace("EARLY", "Early").replace("LATE", "Late");
                     
-                    console.log(arrCmntFixed)
-                    console.log(depCmntFixed)
+                    //console.log(arrCmntFixed)
+                    //console.log(depCmntFixed)
                     
                     let arrText = arr ? `<span class="tag">Arrival: </span>${makeTime(arr, stationObj.tz, dateSetting)} ${arrCmntFixed ? `(${arrCmntFixed})` : ''}` : '';
                     let depText = dep ? `<span class="tag">Departure: </span>${makeTime(dep, stationObj.tz, dateSetting)} ${depCmntFixed ? `(${depCmntFixed})` : ''}` : '';
@@ -129,14 +129,14 @@ const Map = (trainData) => {
                 //thanks norfolk southern
                 let trainTimely = entry.trainTimely ? entry.trainTimely : "No Data";
 
-                console.log(genArrDep(entry.stations.find((station) => station.code == entry.eventCode), 'train'))
+                //console.log(genArrDep(entry.stations.find((station) => station.code == entry.eventCode), 'train'))
 
                 //https://beta.amtraker.com/trainicons/1-late
                 let trainIcon = L.icon({
                     iconUrl: `/images/trainicons/${entry.trainNum}-${trainTimely.toLowerCase().split(' ').join('')}.svg`,
-                    iconSize: [32, 32],
+                    iconSize: [64, 32],
                     iconAnchor: [16, 16],
-                    popupAnchor: [0, -16],
+                    popupAnchor: [16, -16],
                 });
             
                 return (

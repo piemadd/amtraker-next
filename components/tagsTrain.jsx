@@ -1,4 +1,5 @@
 import Script from 'next/script';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 const TagsBlockTrain = ({ trainNum, trainName, trainDate='false' }) => {    
@@ -6,7 +7,7 @@ const TagsBlockTrain = ({ trainNum, trainName, trainDate='false' }) => {
     const router = useRouter()
     
     return (
-        <>
+        <Head>
             <meta name='viewport' content='width=device-width, initial-scale=1'/>
 
             <link rel="alternate" type="application/json+oembed" href={`https://api.amtraker.com/v2/oembed?url=${encodeURIComponent(`https://amtraker.com${router.asPath}`)}`} title={"Amtrak Train " + trainName + " Tracker (Amtrak Train " + trainNum + " Tracker) | Amtraker"} />
@@ -58,7 +59,7 @@ const TagsBlockTrain = ({ trainNum, trainName, trainDate='false' }) => {
     		<meta name="author" content="Piero LLC"/>
     
     		<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml"/>
-        </>
+        </Head>
     );
 };
 
