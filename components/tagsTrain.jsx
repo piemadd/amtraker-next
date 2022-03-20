@@ -7,26 +7,12 @@ const TagsBlockTrain = ({ trainNum, trainName, trainDate='false' }) => {
     const router = useRouter()
     
     return (
+		<>
         <Head>
             <meta name='viewport' content='width=device-width, initial-scale=1'/>
 
             <link rel="alternate" type="application/json+oembed" href={`https://api.amtraker.com/v2/oembed?url=${encodeURIComponent(`https://amtraker.com${router.asPath}`)}`} title={"Amtrak Train " + trainName + " Tracker (Amtrak Train " + trainNum + " Tracker) | Amtraker"} />
             <link rel="alternate" type="text/xml+oembed" href={`https://api.amtraker.com/v2/oembed?url=${encodeURIComponent(`https://amtraker.com${router.asPath}&xml=true`)}`} title={"Amtrak Train " + trainName + " Tracker (Amtrak Train " + trainNum + " Tracker) | Amtraker"} />
-    
-            <Script src="https://www.googletagmanager.com/gtag/js?id=G-L3ZMMQZR55"></Script>
-            <script
-                dangerouslySetInnerHTML={{
-                    __html: `
-                        window.dataLayer = window.dataLayer || [];
-                        function gtag(){dataLayer.push(arguments);}
-                        gtag('js', new Date());
-                        gtag('require', 'dnt')
-                        gtag('config', 'G-L3ZMMQZR55', { page_path: window.location.pathname });
-                    `,
-                }}
-            />
-            
-            <Script src="https://storage.googleapis.com/outfox/dnt_min.js"></Script>
             
     		<title>Amtraker | Amtrak Train {trainName} ({trainNum}) Tracker</title>
     
@@ -60,6 +46,23 @@ const TagsBlockTrain = ({ trainNum, trainName, trainDate='false' }) => {
     
     		<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml"/>
         </Head>
+			<>
+				<Script src="https://www.googletagmanager.com/gtag/js?id=G-L3ZMMQZR55"></Script>
+	            <script
+	                dangerouslySetInnerHTML={{
+	                    __html: `
+	                        window.dataLayer = window.dataLayer || [];
+	                        function gtag(){dataLayer.push(arguments);}
+	                        gtag('js', new Date());
+	                        gtag('require', 'dnt')
+	                        gtag('config', 'G-L3ZMMQZR55', { page_path: window.location.pathname });
+	                    `,
+	                }}
+	            />
+	            
+	            <Script src="https://storage.googleapis.com/outfox/dnt_min.js"></Script>
+			</>
+		</>
     );
 };
 
