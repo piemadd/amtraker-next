@@ -456,3 +456,7 @@ article.settingselector select, input {
     bottom: 0px;
     left: 0px;
 }
+
+.textSection {
+    padding: 12px;
+}

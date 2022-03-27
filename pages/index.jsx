@@ -158,6 +158,11 @@ const Home = (() => {
                                 <p className="card trainCard newTrain clickableThing">+ New Train</p>    
                             </a>
                         </Link>
+                        <Link href="../about">
+                            <a className="trainBoxLink">
+                                <p className="card trainCard newTrain clickableThing">About Amtraker</p>    
+                            </a>
+                        </Link>
                     </details>
                 </section>
             </main>
