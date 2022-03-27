@@ -12,7 +12,7 @@ const TrainRedirect = () => {
         if (slug) {
             window.location.href = `../../trains/${slug[0]}?d=${slug[1]}`;
         } else {
-            //window.location.href = `../../trains/new`;
+            window.location.href = `../../trains/new`;
         }
 
     }, [])

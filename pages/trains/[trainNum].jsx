@@ -78,6 +78,8 @@ export default function Train(params) {
             })
 
         console.log('checking for date idk')
+        console.log(params.trainNum + " " + dataDates)
+        console.log(params.trainNum && (dataDates.includes(parseInt(startDate)) || dataDates.includes(new Date(startDate).getDate())))
         
         if (params.trainNum && (dataDates.includes(parseInt(startDate)) || dataDates.includes(new Date(startDate).getDate()))) {
             
@@ -126,7 +128,7 @@ export default function Train(params) {
         return (
             <>
                 <TagsBlockTrain trainNum={params.trainNum} trainName={params.trainName}/>
-                <TrainLinks trainNum={params.trainNum} trainName={params.trainName}/>
+                <TrainLinks trainNum={params.trainNum} trainName={params.trainName} embed={embedState}/>
             </>
         )
     }

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useEffect, useState } from "react";
 
-const TrainLinks = (({trainNum, trainName}) => {
+const TrainLinks = (({trainNum, trainName, embed}) => {
 
     const [data, setData] = useState([])
     const [isLoading, setLoading] = useState(false)
@@ -24,6 +24,8 @@ const TrainLinks = (({trainNum, trainName}) => {
             })
     }, [])
 
+    const embedState = (embed != 'false') ? '&embed=true' : ''
+
     //let dates = JSON.parse(JSON.stringify(data));
     let dates = data;
     
@@ -42,7 +44,7 @@ const TrainLinks = (({trainNum, trainName}) => {
                         <p key={`${trainNum}-${new Date(trainDate).getDate()}`}>
                             <Link
                                 href={{
-                                    pathname: `/trains/${trainNum}/${new Date(trainDate).getDate()}`,
+                                    pathname: `/trains/${trainNum}/${new Date(trainDate).getDate()}${embedState}`,
                                 }}
                                 key={trainDate}
                             >
