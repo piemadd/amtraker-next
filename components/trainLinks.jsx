@@ -44,7 +44,7 @@ const TrainLinks = (({trainNum, trainName, embed}) => {
                         <p key={`${trainNum}-${new Date(trainDate).getDate()}`}>
                             <Link
                                 href={{
-                                    pathname: `/trains/${trainNum}/${new Date(trainDate).getDate()}${embedState}`,
+                                    pathname: `/trains/${trainNum}/${new Date(trainDate).getDate()}`,
                                 }}
                                 key={trainDate}
                             >
