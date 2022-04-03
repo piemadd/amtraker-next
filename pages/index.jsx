@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router'
 import AutoTrainBoxTrainNum from '../components/trainBoxes/autoTrainBoxTrainNum';
+import AboutSection from '../components/aboutSection';
 
 import TagsBlock from '../components/tags'
 
@@ -143,7 +144,7 @@ const Home = (() => {
             <TagsBlock />
             <main className="screen">
                 <section className="trainsBarAlign">
-                    <details className="content">
+                    <details className="content" open="true">
                         <summary>
                             Your Trains
                         </summary>
@@ -158,11 +159,13 @@ const Home = (() => {
                                 <p className="card trainCard newTrain clickableThing">+ New Train</p>    
                             </a>
                         </Link>
-                        <Link href="../about">
-                            <a className="trainBoxLink">
-                                <p className="card trainCard newTrain clickableThing">About Amtraker</p>    
-                            </a>
-                        </Link>
+						
+						<details className="card trainCard clickableThing aboutDropDown" open="true">
+						<summary>
+							About Amtraker
+						</summary>
+							<AboutSection/>
+						</details>
                     </details>
                 </section>
             </main>
@@ -179,3 +182,11 @@ const Home = (() => {
 })
 
 export default Home;
+
+/*
+                        <Link href="../about">
+                            <a className="trainBoxLink">
+                                <p className="card trainCard newTrain clickableThing">About Amtraker</p>    
+                            </a>
+                        </Link>
+						*/

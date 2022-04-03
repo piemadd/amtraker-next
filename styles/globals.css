@@ -460,3 +460,11 @@ article.settingselector select, input {
 .textSection {
     padding: 12px;
 }
+
+.aboutDropDown {
+	padding: 0;
+}
+
+.aboutDropDown:hover {
+	transform: scale(1);
+}
