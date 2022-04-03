@@ -7,19 +7,19 @@ const TagsBlock = () => {
 	        <Head>
 	            <meta name='viewport' content='width=device-width, initial-scale=1'/>
 	            
-	    		<title>Amtraker | Amtrak Train Tracker</title>
+	    		<title>Amtrak Train Tracker | Amtraker</title>
 	    
 	    		<meta property="og:url" content="https://amtraker.com/"/>
 	    		<meta property="og:type" content="website"/>
-	    		<meta property="og:title" content="Amtraker | Amtrak Train Tracker"/>
-	    		<meta property="og:description" content="Never worry about tracking your Amtrak train again, even in the middle of nowhere. This simple website and PWA makes it easier than ever to track trains while using minimal amounts of data."/>
+	    		<meta property="og:title" content="Amtrak Train Tracker | Amtraker"/>
+	    		<meta property="og:description" content="Fastest and easiest Amtrak train tracker. Get the status of your train quick and easy with Amtraker."/>
 	    		<meta property="og:image" content="https://amtraker.com/images/opengraph.png"/>
 	    
 	    		<meta name="twitter:card" content="summary_large_image"/>
 	    		<meta property="twitter:domain" content="amtraker.com"/>
 	    		<meta property="twitter:url" content="https://amtraker.com/"/>
 	    		<meta name="twitter:title" content="Amtraker | Amtrak Train Tracker"/>
-	    		<meta name="twitter:description" content="Never worry about tracking your Amtrak train again, even in the middle of nowhere. This simple website and PWA makes it easier than ever to track trains while using minimal amounts of data."/>
+	    		<meta name="twitter:description" content="Fastest and easiest Amtrak train tracker. Get the status of your train quick and easy with Amtraker."/>
 	    		<meta name="twitter:image" content="https://amtraker.com/images/opengraph.png"/>
 	        
 	    		<link rel="manifest" href="manifest.json" />
@@ -28,8 +28,8 @@ const TagsBlock = () => {
 	    		<meta name="apple-mobile-web-app-status-bar" content="#212529" />
 	    		<meta name="theme-color" content="#212529" />
 	    
-	    		<meta name="title" content="Amtraker | Amtrak Train Tracker"/>
-	    		<meta name="description" content="Never worry about tracking your Amtrak train again, even in the middle of nowhere. This simple website and PWA makes it easier than ever to track trains while using minimal amounts of data."/>
+	    		<meta name="title" content="Amtrak Train Tracker | Amtraker"/>
+	    		<meta name="description" content="Fastest and easiest Amtrak train tracker. Get the status of your train quick and easy with Amtraker."/>
 	    		<meta name="keywords" content="Amtrak, Amtrak Train Amtrak Train Status, Amtrak Train Tracker, Amtrak Tracker, Amtrak Train Status Today, Amtrak Status, Amtrak Train Tracking, Amtrak Tracking, Train Tracking"/>
 	    		<meta name="robots" content="index, follow"/>
 	    		<meta httpEquiv="Content-Type" content="text/html; charset=utf-8"/>
