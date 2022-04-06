@@ -144,7 +144,7 @@ const Home = (() => {
             <TagsBlock />
             <main className="screen">
                 <section className="trainsBarAlign">
-                    <details className="content" open="true">
+                    <details className="content">
                         <summary>
                             Your Trains
                         </summary>
@@ -160,7 +160,7 @@ const Home = (() => {
                             </a>
                         </Link>
 						
-						<details className="card trainCard clickableThing aboutDropDown" open="true">
+						<details className="card trainCard clickableThing aboutDropDown">
 						<summary>
 							About Amtraker
 						</summary>
