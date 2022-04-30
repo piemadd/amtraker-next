@@ -1,13 +1,21 @@
 const { data } = require('./public/data/trainNums');
+const { types } = require('./public/data/trainTypes');
 const fs = require('fs');
 
 const statusColors = {
-    'ontime': '#1864AB',
-    'early': '#2B8A3E',
-    'late': '#A832CC',
+    'ontime': '#63A744',
+    'early': '#63A744',
+    'late': '#485053',
     'complete': '#212529',
     'nodata': '#212529'
 }
+
+const backgroundColors = {
+    'long': '#1A4F7F',
+    'state': '#474747',
+    'nec': '#000000',
+    'acela': '#028599'
+};
 
 const sizing = {
     1: {
@@ -39,8 +47,8 @@ const generateSvg = ((params) => {
     
     return `
        <svg width="${trainSizing.outer}" height="128" viewBox="0 0 ${trainSizing.outer} 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="0" width="${trainSizing.outer}" height="128" rx="44" fill="#000000"/>
-            <rect x="7" y="7" width="${trainSizing.inner}" height="114" rx="36" fill="${statusColors[status]}"/>
+            <rect x="0" width="${trainSizing.outer}" height="128" rx="44" fill="${statusColors[status]}"/>
+            <rect x="7" y="7" width="${trainSizing.inner}" height="114" rx="36" fill="${backgroundColors[types[trainNum]]}"/>
             <text x="${parseInt(trainSizing.outer)/2}" y="90" fill="#fff" font-family="monospace" font-size="86px" text-anchor="middle">${trainNum}</text>
         </svg>
     `

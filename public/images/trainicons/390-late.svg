@@ -1,7 +1,7 @@
 
        <svg width="192" height="128" viewBox="0 0 192 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="0" width="192" height="128" rx="44" fill="#000000"/>
-            <rect x="7" y="7" width="178" height="114" rx="36" fill="#A832CC"/>
+            <rect x="0" width="192" height="128" rx="44" fill="#485053"/>
+            <rect x="7" y="7" width="178" height="114" rx="36" fill="#474747"/>
             <text x="96" y="90" fill="#fff" font-family="monospace" font-size="86px" text-anchor="middle">390</text>
         </svg>
     
