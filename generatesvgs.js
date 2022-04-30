@@ -5,7 +5,7 @@ const fs = require('fs');
 const statusColors = {
     'ontime': '#63A744',
     'early': '#63A744',
-    'late': '#485053',
+    'late': '#F6A33D',
     'complete': '#212529',
     'nodata': '#212529'
 }
@@ -41,9 +41,9 @@ const generateSvg = ((params) => {
     const trainNum = state[0];
     const status = state[1]; //late, early, etc
 
-    console.log(trainNum.split('').length)
+    //console.log(trainNum.split('').length)
     const trainSizing = sizing[trainNum.split('').length];
-    console.log(trainSizing.outer)
+    //console.log(trainSizing.outer)
     
     return `
        <svg width="${trainSizing.outer}" height="128" viewBox="0 0 ${trainSizing.outer} 128" fill="none" xmlns="http://www.w3.org/2000/svg">
