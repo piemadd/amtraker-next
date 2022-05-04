@@ -73,5 +73,5 @@ fs.readdirSync('./').forEach(file => {
 for (let i = 0; i < trainStates.length; i++) {
     const svgData = generateSvg(trainStates[i]);
     console.log('public/images/trainicons/' + trainStates[i])
-    fs.writeFileSync(__dirname + 'public/images/trainicons/' + trainStates[i], svgData);
+    fs.writeFileSync(__dirname + '/public/images/trainicons/' + trainStates[i], svgData);
 }
