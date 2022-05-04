@@ -4,7 +4,7 @@
     "private": true,
     "scripts": {
         "dev": "next dev",
-        "build": "node generatesvgs.js && next build",
+        "build": "next build",
         "start": "next start",
         "static": "next build && next export",
         "lint": "next lint"
