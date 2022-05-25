@@ -139,6 +139,7 @@ const Home = (() => {
     return (
         <div>
             <Head>
+                <meta name="google-site-verification" content="LQ5e8V57pRofd5ubP1-srhirE1L506Qs7Jf-c29y-5A" />
                 <link rel="manifest" href="/manifest.json" />
             </Head>
             <TagsBlock />
