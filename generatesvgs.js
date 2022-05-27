@@ -44,11 +44,14 @@ const generateSvg = ((params) => {
     //console.log(trainNum.split('').length)
     const trainSizing = sizing[trainNum.split('').length];
     //console.log(trainSizing.outer)
+
+    //backgroundColors[types[trainNum]]
+    //statusColors[status]
     
     return `
        <svg width="${trainSizing.outer}" height="128" viewBox="0 0 ${trainSizing.outer} 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="0" width="${trainSizing.outer}" height="128" rx="44" fill="${statusColors[status]}"/>
-            <rect x="7" y="7" width="${trainSizing.inner}" height="114" rx="36" fill="${backgroundColors[types[trainNum]]}"/>
+            <rect x="0" width="${trainSizing.outer}" height="128" rx="44" fill="${backgroundColors[types[trainNum]]}"/>
+            <rect x="7" y="7" width="${trainSizing.inner}" height="114" rx="36" fill="${statusColors[status]}"/>
             <text x="${parseInt(trainSizing.outer)/2}" y="90" fill="#fff" font-family="monospace" font-size="86px" text-anchor="middle">${trainNum}</text>
         </svg>
     `
