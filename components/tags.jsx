@@ -7,11 +7,11 @@ const TagsBlock = () => {
 	        <Head>
 	            <meta name='viewport' content='width=device-width, initial-scale=1'/>
 	            
-	    		<title>Amtrak Train Tracker | Amtraker - Fast and Easy to Use Amtrak Train Tracker</title>
+	    		<title>Amtrak Train Tracker | Amtraker</title>
 	    
 	    		<meta property="og:url" content="https://amtraker.com/"/>
 	    		<meta property="og:type" content="website"/>
-	    		<meta property="og:title" content="Amtrak Train Tracker | Amtraker - Fast and Easy to Use Amtrak Train Tracker"/>
+	    		<meta property="og:title" content="Amtrak Train Tracker | Amtraker"/>
 	    		<meta property="og:description" content="Fastest and easiest Amtrak train tracker. Get the status of your train quick and easy with Amtraker."/>
 	    		<meta property="og:image" content="https://amtraker.com/images/opengraph.png"/>
 	    
@@ -28,7 +28,7 @@ const TagsBlock = () => {
 	    		<meta name="apple-mobile-web-app-status-bar" content="#212529" />
 	    		<meta name="theme-color" content="#212529" />
 	    
-	    		<meta name="title" content="Amtrak Train Tracker | Amtraker - Fast and Easy to Use Amtrak Train Tracker"/>
+	    		<meta name="title" content="Amtrak Train Tracker | Amtraker"/>
 	    		<meta name="description" content="Fastest and easiest Amtrak train tracker. Get the status of your train quick and easy with Amtraker."/>
 	    		<meta name="keywords" content="Amtrak, Amtrak Train Amtrak Train Status, Amtrak Train Tracker, Amtrak Tracker, Amtrak Train Status Today, Amtrak Status, Amtrak Train Tracking, Amtrak Tracking, Train Tracking"/>
 	    		<meta name="robots" content="index, follow"/>
