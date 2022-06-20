@@ -469,6 +469,6 @@ article.settingselector select, input {
 	transform: scale(1);
 }
 
-.clickable > a {
+.clickable {
   cursor: pointer;
 }
