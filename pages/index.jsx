@@ -11,7 +11,6 @@ import TagsBlock from '../components/tags'
 const Home = (() => {
 
     const router = useRouter()
-    
     const MapWithNoSSR = Dynamic(() => import('../components/map'), {
         ssr: false
     });

@@ -468,3 +468,7 @@ article.settingselector select, input {
 .aboutDropDown:hover {
 	transform: scale(1);
 }
+
+.clickable > a {
+  cursor: pointer;
+}
