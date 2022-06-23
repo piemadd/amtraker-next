@@ -94,7 +94,7 @@ body, #__next{
     border-style: none;
     border-width: 1px;
     border-color: var(--fg-secondary);
-    border-radius: 12px;
+    border-radius: 4px;
     display: flex;
     width: auto;
     margin: 0px;
@@ -110,7 +110,11 @@ body, #__next{
 }
 
 .trainCard {
-    margin: 12px;
+    margin: 0px 0px 8px 0px;
+}
+
+.trainBoxLink:last-child > .trainCard {
+  margin: 0px;
 }
 
 .trainBoxLink {
@@ -471,4 +475,21 @@ article.settingselector select, input {
 
 .clickable {
   cursor: pointer;
+}
+
+.MuiAccordion-root, MuiPaper-root, MuiButtonBase-root {
+  color: var(--fg-primary);
+  background-color: var(--bg-primary);
+}
+
+.fg1 {
+  color: var(--fg-primary);
+}
+
+.bg1 {
+  background-color: var(--bg-primary);
+}
+
+.bg2 {
+  background-color: var(--bg-secondary);
 }
