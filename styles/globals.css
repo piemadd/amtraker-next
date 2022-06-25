@@ -64,6 +64,7 @@ header > div > h2 {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
 	gap: 12px;
+  padding: 12px;
 }
 
 @media only screen and (max-width: 400px) {
@@ -477,6 +478,7 @@ article.settingselector select, input {
   cursor: pointer;
 }
 
+/*
 .MuiAccordion-root, MuiPaper-root, MuiButtonBase-root {
   color: var(--fg-primary);
   background-color: var(--bg-primary);
@@ -493,3 +495,4 @@ article.settingselector select, input {
 .bg2 {
   background-color: var(--bg-secondary);
 }
+*/

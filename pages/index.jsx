@@ -6,6 +6,9 @@ import { useRouter } from 'next/router'
 import AutoTrainBoxTrainNum from '../components/trainBoxes/autoTrainBoxTrainNum';
 import AboutSection from '../components/aboutSection';
 
+import themeOptions from '../components/theming';
+import { ThemeProvider } from '@mui/material/styles';
+
 import { Accordion, AccordionSummary, AccordionDetails, Card } from '@mui/material';
 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -140,7 +143,7 @@ const Home = (() => {
   console.log(trainData)
 
   return (
-    <div>
+    <ThemeProvider theme={themeOptions}>
       <Head>
         <meta name="google-site-verification" content="LQ5e8V57pRofd5ubP1-srhirE1L506Qs7Jf-c29y-5A" />
         <link rel="manifest" href="/manifest.json" />
@@ -148,7 +151,7 @@ const Home = (() => {
       <TagsBlock />
       <main className="screen">
         <section className="trainsBarAlign">
-          <Accordion className="content">
+          <Accordion className="content" sx={{ bgcolor: themeOptions.palette.background.default}}>
             <AccordionSummary expandIcon={<ExpandMoreIcon className={"fg1"}/>}>
               Your Trains
             </AccordionSummary>
@@ -181,7 +184,7 @@ const Home = (() => {
         Show All Trains
         <input type="checkbox" id="showAllTrains" name="showAllTrains" value="showAll" onClick={handleShowAll} />
       </span>
-    </div>
+    </ThemeProvider>
   )
 })
 
