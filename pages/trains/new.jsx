@@ -7,100 +7,96 @@ import ManualTrainBox from '../../components/trainBoxes/manualTrainBox';
 
 function NewTrain() {
 
-    const router = useRouter();
-    
-    const [trainData, setTrainData] = useState([]);
-    const [isLoading, setLoading] = useState(false);
-    const [query, updateQuery] = useState('');
+  const router = useRouter();
 
-    useEffect(() => {      
-        setLoading(true)
-        fetch('https://api.amtraker.com/v1/trains')
-            .then((res) => res.json())
-            .then((receivedTrainData) => {
+  const [trainData, setTrainData] = useState([]);
+  const [isLoading, setLoading] = useState(false);
+  const [query, updateQuery] = useState('');
 
-                setTrainData(receivedTrainData);
-                setLoading(false)
-            })
-    }, [])
+  useEffect(() => {
+    setLoading(true)
+    fetch('https://api.amtraker.com/v1/trains')
+      .then((res) => res.json())
+      .then((receivedTrainData) => {
 
-    let trainListFull = [];
+        setTrainData(receivedTrainData);
+        setLoading(false)
+      })
+  }, [])
 
-    let trainNums = Object.keys(trainData);
-    for (let i = 0; i < trainNums.length; i++) {
-        for (let j = 0; j < trainData[trainNums[i]].length; j++) {
-            trainListFull.push(trainData[trainNums[i]][j]);
-        }
+  let trainListFull = [];
+
+  let trainNums = Object.keys(trainData);
+  for (let i = 0; i < trainNums.length; i++) {
+    for (let j = 0; j < trainData[trainNums[i]].length; j++) {
+      trainListFull.push(trainData[trainNums[i]][j]);
     }
+  }
 
-    const [alreadySavedTrains, setAlreadySavedTrains] = useState([]);
-    useEffect(() => {
-        setAlreadySavedTrains(Object.keys(JSON.parse(localStorage.getItem('savedTrains'))))
-    }, [])
-    
-    const fuseOptions = {
-        includeScore: true,
-         threshold: 0.4,
-        keys: ['trainNum', 'routeName', 'aliases', 'stations.code', 'stations.stationName']
-    }
-    
-    const dataIndex = Fuse.createIndex(fuseOptions.keys, trainListFull)
-    const fuse = new Fuse(trainListFull, fuseOptions, dataIndex);
+  const [alreadySavedTrains, setAlreadySavedTrains] = useState([]);
+  useEffect(() => {
+    setAlreadySavedTrains(Object.keys(JSON.parse(localStorage.getItem('savedTrains'))))
+  }, [])
 
-    const results = fuse.search(query);
-    const trainResults = query ? results.map(result => result.item) : trainListFull;
+  const fuseOptions = {
+    includeScore: true,
+    threshold: 0.4,
+    keys: ['trainNum', 'routeName', 'aliases', 'stations.code', 'stations.stationName']
+  }
 
-    const onSearch = (({ currentTarget }) => {
-        updateQuery(currentTarget.value)
-    })
+  const dataIndex = Fuse.createIndex(fuseOptions.keys, trainListFull)
+  const fuse = new Fuse(trainListFull, fuseOptions, dataIndex);
 
-    return (
-        <>
-            <Head>
-                <title>
-                    Amtraker | New Train
-                </title>
-            </Head>
-            <header className="newPageHeader">
-                <div>
-                    <h2 className="clickable"><a onClick={() => router.back()}>Back</a></h2>
-                    <h1>New Train</h1>
-                    <h2></h2>
-                </div>
-                <div className="searchBoxHolder">
-                    <input type="text" id="searchBox" name="searchBox" placeholder="Search" value={query} onChange={onSearch} />
-                </div>
-            </header>
-    
-            <main className="trainsHolder newPage">
-                {trainResults.map((trainDataInd) => {
+  const results = fuse.search(query);
+  const trainResults = query ? results.map(result => result.item) : trainListFull;
 
-                    let greyed = 'false';
-                    console.log(alreadySavedTrains)
-                    if (alreadySavedTrains.includes(`${trainDataInd.trainNum}-${new Date(trainDataInd.origSchDep).getDate()}`)) {
-                        console.log(`${trainDataInd.trainNum}-${new Date(trainDataInd.origSchDep).getDate()}`)
-                        greyed = 'true';
-                    }
+  const onSearch = (({ currentTarget }) => {
+    updateQuery(currentTarget.value)
+  })
 
-                    let greyedLink = (greyed == 'true') ? ' alreadyExists' : '';
+  return (
+    <>
+      <Head>
+        <title>
+          Amtraker | New Train
+        </title>
+      </Head>
+      <header className="newPageHeader">
+        <div>
+          <h2 className="clickable"><a onClick={() => router.back()}>Back</a></h2>
+          <h1>New Train</h1>
+          <h2></h2>
+        </div>
+        <div className="searchBoxHolder">
+          <input type="text" id="searchBox" name="searchBox" placeholder="Search" value={query} onChange={onSearch} />
+        </div>
+      </header>
 
-                    let linkHref = (greyed != 'true') ? `/?add=true&n=${trainDataInd.trainNum}&d=${new Date(trainDataInd.origSchDep).getDate()}` : '';
-                    console.log(linkHref)
+      <main className="trainsHolder newPage">
+        {trainResults.map((trainDataInd) => {
 
-                    console.log('greyed: ' + greyed)
-                    console.log('greyedLink: ' + greyedLink)
-            
-                    return (
-                        <Link key={`${trainDataInd.trainNum}-${new Date(trainDataInd.origSchDep).getDate()}`} href={linkHref} className={"trainBoxLink" + greyedLink}>
-                            <a className={"trainBoxLink" + greyedLink}>
-                                <ManualTrainBox trainObj={trainDataInd} clickable={greyed ? 'false' : 'true'} greyed={greyed}/>
-                            </a>
-                        </Link>
-                    )
-                })}
-            </main>
-        </>
-    )
+          let greyed = 'false';
+          console.log(alreadySavedTrains)
+          if (alreadySavedTrains.includes(`${trainDataInd.trainNum}-${new Date(trainDataInd.origSchDep).getDate()}`)) {
+            console.log(`${trainDataInd.trainNum}-${new Date(trainDataInd.origSchDep).getDate()}`)
+            greyed = 'true';
+          }
+
+          let greyedLink = (greyed == 'true') ? ' alreadyExists' : '';
+
+          let linkHref = (greyed != 'true') ? `/?add=true&n=${trainDataInd.trainNum}&d=${new Date(trainDataInd.origSchDep).getDate()}` : '';
+          console.log(linkHref)
+
+          console.log('greyed: ' + greyed)
+          console.log('greyedLink: ' + greyedLink)
+
+          return (
+            <ManualTrainBox trainObj={trainDataInd} clickable={'true'} buttonLink={`/?add=true&n=${trainDataInd.trainNum}&d=${new Date(trainDataInd.origSchDep).getDate()}`} greyed={greyed} />
+          )
+        })}
+      </main>
+    </>
+  )
 }
 
 export default NewTrain;

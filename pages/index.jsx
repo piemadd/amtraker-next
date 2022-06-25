@@ -155,7 +155,7 @@ const Home = (() => {
             <AccordionSummary expandIcon={<ExpandMoreIcon className={"fg1"}/>}>
               Your Trains
             </AccordionSummary>
-            <AccordionDetails>
+            <AccordionDetails sx={{ display: 'grid', gap: '12px' }}>
               {
                 trainData.map((entry) => {
                   return <AutoTrainBoxTrainNum key={`${entry.trainNum}-${new Date(entry.origSchDep).getDate()}`} trainNum={entry.trainNum} trainDate={new Date(entry.origSchDep).getDate()} clickable={true} />
