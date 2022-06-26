@@ -21,7 +21,7 @@ const Home = (() => {
   const MapWithNoSSR = Dynamic(() => import('../components/map'), {
     ssr: false
   });
-
+  
   const [trainData, setTrainData] = useState([]);
   const [showAll, setShowAll] = useState(false);
 
@@ -51,7 +51,7 @@ const Home = (() => {
 
       localStorage.setItem('savedTrains', JSON.stringify(savedTrainsList));
 
-      router.replace(`/trains/${localParamsTemp.n}?d=${localParamsTemp.d}`);
+      router.replace('/');
     }
 
     let savedTrainsList = localStorage.getItem('savedTrains') ? localStorage.getItem('savedTrains') : '{}';
