@@ -91,7 +91,9 @@ function NewTrain() {
           console.log('greyedLink: ' + greyedLink)
 
           return (
-            <ManualTrainBox trainObj={trainDataInd} clickable={'true'} buttonLink={`/?add=true&n=${trainDataInd.trainNum}&d=${new Date(trainDataInd.origSchDep).getDate()}`} greyed={greyed} />
+            <div key={`train-${trainDataInd.trainNum}-${new Date(trainDataInd.origSchDep).getDate()}`}>
+              <ManualTrainBox trainObj={trainDataInd} clickable={'true'} buttonLink={`/?add=true&n=${trainDataInd.trainNum}&d=${new Date(trainDataInd.origSchDep).getDate()}`} greyed={greyed} />
+            </div>
           )
         })}
       </main>
