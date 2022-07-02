@@ -1,7 +1,8 @@
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, GeoJSON  } from "react-leaflet";
 import L from 'leaflet';
 import "leaflet/dist/leaflet.css";
 import Link from 'next/link';
+import nationalRoute from './nationalRoute.json';
  
 let southWest = L.latLng(19.415580, -128.807311);
 let northEast = L.latLng(62.387941, -56.355762);
@@ -156,6 +157,7 @@ const Map = (trainData) => {
                     </Marker>
                 )
             })}
+          <GeoJSON key={'lines'} data={nationalRoute} style={{color: '#6d33ff', weight: 1}}/>
         </MapContainer>
     );
 };
