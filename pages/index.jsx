@@ -142,7 +142,12 @@ const Home = (() => {
   console.log("showAll: " + showAll + "(" + typeof showAll + ")")
   console.log(trainData)
 
-  return (
+  return(<>
+    <h1>Amtraker is down for unscheduled maintnence</h1>
+    <p>Due to a change on Amtrak's end of things, the Amtraker servers have gone down. I am working as fast as I can to bring the service back up, but this may take a few days as I have a full time job. In the mean time, I highly reccomend using the <a href="https://www.amtrak.com/track-your-train.html">official Amtrak Track your Train Map</a>. It has all of the same information as Amtraker, but in a less user friendly format.</p>
+  </>)
+  
+  /*return (
     <ThemeProvider theme={themeOptions}>
       <Head>
         <meta name="google-site-verification" content="LQ5e8V57pRofd5ubP1-srhirE1L506Qs7Jf-c29y-5A" />
@@ -185,7 +190,7 @@ const Home = (() => {
         <input type="checkbox" id="showAllTrains" name="showAllTrains" value="showAll" onClick={handleShowAll} />
       </span>
     </ThemeProvider>
-  )
+  )*/
 })
 
 export default Home;
