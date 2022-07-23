@@ -63,16 +63,19 @@ export default function Train(params) {
     fetch('https://api.amtraker.com/v1/trains/dates')
       .then((res) => res.json())
       .then((dates) => {
-        const justDates = [];
+        let justDates = [];
+        const datesKeys = Object.keys(dates); 
 
-        if (dates[params.trainNum] && dates[params.trainNum].length > 0) {
-          for (let i = 0; i < dates[params.trainNum].length; i++) {
-            const tempDate = new Date(dates[params.trainNum][i]);
-            justDates.push(tempDate.getDate());
+        
+        for (let i = 0; i < datesKeys.length; i++) {
+          console.log(dates[datesKeys[i]])
+          if (dates[datesKeys[i]].includes(Number(params.trainNum))) {
+            justDates.push(Number(datesKeys[i]));
           }
         }
 
         setDataDates(justDates);
+        window.dataDates = justDates;
         //setDataDates(dates[params.trainNum]);
         setLoading(false)
       })
@@ -99,6 +102,15 @@ export default function Train(params) {
 
   }, [])
 
+  console.log('trainNum')
+  console.log(params.trainNum)
+
+  console.log('dataDates')
+  console.log(dataDates)
+
+  console.log('dataDates includes')
+  console.log((dataDates.includes(parseInt(startDate)) || dataDates.includes(new Date(startDate).getDate())))
+  
   if (params.trainNum && (dataDates.includes(parseInt(startDate)) || dataDates.includes(new Date(startDate).getDate()))) {
     return (
       <>
