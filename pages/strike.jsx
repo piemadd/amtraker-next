@@ -47,7 +47,7 @@ const Home = (() => {
         <h3><u>Why</u> are they striking?</h3>
         <p>Rail workers have been without a new Union contract for multiple years now causing wages have quickly fall behind inflation. Along with more restrictive attendance policies which cause workers to miss important events (birthdays, anniversaries, etc) they also have also essentially left the workers without a way to get access to healthcare. This being because they are on call 24/7, where at any moment they could get called away from home for days at a time. These issues I have mentioned are barely scratching the surface, there are many more. I reccommend reading <a href="https://reddit.com/r/railroading">r/railroading</a>.</p>
         <h3><u>How</u> will Amtraker be affected?</h3>
-        <p>I will be taking Amtraker servers during the strike, so while this website might load, the services powering parts of it (the train tracking) will stop working until I restart them upon completion of the strike.</p>
+        <p>I will be taking Amtraker servers offline during the strike, so while this website might load, the services powering parts of it (the train tracking) will stop working until I restart them upon completion of the strike.</p>
       </main>
     </>
   )
