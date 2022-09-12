@@ -35,11 +35,11 @@ const Home = (() => {
 
       <main className="textSection">
         <h1>Amtraker Strike Solidarity</h1>
-        <p>To put this as simply as possible, I'll be giving a quick sum up in the 5 Ws, 1 H format.</p>
+        <p>To put this as simply as possible, I&apos;ll be giving a quick sum up in the 5 Ws, 1 H format.</p>
         <h3><u>Who</u> is striking?</h3>
         <p>The ~115,000 Class 1 Railroad Workers in the United States.</p>
         <h3><u>What</u> will happen?</h3>
-        <p>To put it simply, we'll see a large part of american logistical infrastructure shut down. This will cost the economy something like ~$2bn each day. If we attempted to replace the ~115,000 rail workers with long haul truckers, it would take something in the ballpark of 467,000 of them. You can read more <a href="https://www.cnbc.com/2022/09/08/deadline-for-rail-strike-which-could-cost-2-billion-a-day-nears.html"></a> about the impacts, though I should warn you that CNBC has an anti-union bias.</p>
+        <p>To put it simply, we&apos;ll see a large part of american logistical infrastructure shut down. This will cost the economy something like ~$2bn each day. If we attempted to replace the ~115,000 rail workers with long haul truckers, it would take something in the ballpark of 467,000 of them. You can read more <a href="https://www.cnbc.com/2022/09/08/deadline-for-rail-strike-which-could-cost-2-billion-a-day-nears.html"></a> about the impacts, though I should warn you that CNBC has an anti-union bias.</p>
         <h3><u>When</u> will the strike begin?</h3>
         <p>Nobody knows for sure, but strike authorization starts at 12:01 AM ET on September the 16th.</p>
         <h3><u>Where</u> will the strike have an impact?</h3>
