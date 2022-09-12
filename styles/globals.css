@@ -89,6 +89,10 @@ body, #__next{
 	overflow: hidden;
 }
 
+.textSection {
+  overflow-y: scroll;
+}
+
 .card {
   transition: all .1s ease-in-out;
   background-color: var(--bg-secondary);
