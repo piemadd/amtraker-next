@@ -32,8 +32,11 @@ const Map = (trainData) => {
       scrollWheelZoom={true}
     >
       <TileLayer
-        url={`https://map.amtrakle.com/{z}/{x}/{y}`}
-        attribution='Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
+        url={`https://tile.amtrakle.com/13/2105/3038.png`}
+      />
+      <TileLayer
+        url={`https://tile.amtrakle.com/{z}/{x}/{y}.png`}
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
       {trainData.trainData.map((entry) => {
         const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];

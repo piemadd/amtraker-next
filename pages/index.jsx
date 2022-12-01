@@ -171,12 +171,13 @@ const Home = (() => {
                   <p className="card trainCard newTrain clickableThing">+ New Train</p>
                 </a>
               </Link>
-
+              {/*
               <Link href="../strike">
                 <a className="trainBoxLink">
                   <p className="card trainCard newTrain clickableThing">Strike Solidarity</p>
                 </a>
               </Link>
+              */}
 
               <Link href="../about">
                 <a className="trainBoxLink">

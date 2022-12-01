@@ -66,9 +66,11 @@ export default function Train(params) {
         let justDates = [];
         const datesKeys = Object.keys(dates); 
 
+        console.log('datesKeys:', datesKeys)
+
         
         for (let i = 0; i < datesKeys.length; i++) {
-          console.log(dates[datesKeys[i]])
+          console.log('date', datesKeys[i], dates[datesKeys[i]])
           if (dates[datesKeys[i]].includes(Number(params.trainNum))) {
             justDates.push(Number(datesKeys[i]));
           }
