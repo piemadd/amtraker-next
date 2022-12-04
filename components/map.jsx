@@ -9,15 +9,6 @@ let northEast = L.latLng(62.387941, -56.355762);
 let bounds = L.latLngBounds(southWest, northEast);
 
 const Map = (trainData) => {
-
-  //const style = 'piemadd/ckyugw7ui000y14o2nq8we94g'
-  //const token = 'pk.eyJ1IjoicGllbWFkZCIsImEiOiJjbDBsZjYxaGYwYngzM2p0NGtocmo0cHlhIn0.E1MTAeD7QLDKhrUtG2MTyA'
-
-  //console.log("trainData: " + trainData.trainData)
-  //console.log(trainData.trainData)
-
-  //url={`https://api.mapbox.com/styles/v1/${style}/tiles/{z}/{x}/{y}?access_token=${token}`}
-
   return (
     <MapContainer
       center={[39.14710270770074, -96.1962890625]}
@@ -137,7 +128,7 @@ const Map = (trainData) => {
 
         //https://map.amtrakle.com/svg/amtraker/22-early.svg
         let trainIcon = L.icon({
-          iconUrl: `https://map.amtrakle.com/svg/amtraker/${entry.trainNum}-${trainTimely.toLowerCase().split(' ').join('')}.svg`,
+          iconUrl: `https://tile.amtrakle.com/svg/amtraker-next/${entry.trainNum}/${trainTimely.toLowerCase().split(' ').join('')}.svg`,
           iconSize: [64, 32],
           iconAnchor: [16, 16],
           popupAnchor: [16, -16],

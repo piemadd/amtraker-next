@@ -40,6 +40,7 @@ const TrainLinks = (({trainNum, trainName, embed}) => {
             <div className="trainSelector">
                 <p>Which day&#39;s train would you like to track?</p>
                 {data.map((trainDate) => {
+              console.log(trainDate)
                     return (
                         <p key={`${trainNum}-${new Date(trainDate).getDate()}`}>
                             <Link
