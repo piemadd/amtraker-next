@@ -161,6 +161,11 @@ const Home = (() => {
               Your Trains
             </AccordionSummary>
             <AccordionDetails sx={{ display: 'grid', gap: '12px' }}>
+              <Link href="https://backtrak.amtraker.com/">
+                <a className="trainBoxLink">
+                  <p className="card trainCard newTrain clickableThing">Amtraker Backtrak</p>
+                </a>
+              </Link>
               {
                 trainData.map((entry) => {
                   return <AutoTrainBoxTrainNum key={`${entry.trainNum}-${new Date(entry.origSchDep).getDate()}`} trainNum={entry.trainNum} trainDate={new Date(entry.origSchDep).getDate()} clickable={true} />
